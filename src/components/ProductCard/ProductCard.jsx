@@ -268,14 +268,14 @@ const ProductCard = ({
 
         <div className="price-wrapper">
           <span className="current-price">
-            ${product.price}
+            Rs. {Number(product.price).toFixed(2)}
           </span>
 
           {product.comparePrice >
             product.price && (
             <>
               <span className="compare-price">
-                ${product.comparePrice}
+                Rs. {Number(product.comparePrice).toFixed(2)}
               </span>
 
               <span className="save-badge-price">

@@ -73,14 +73,14 @@ const Orders = () => {
                     <div key={index} className="order-item">
                       <span>{item.product?.name}</span>
                       <span>Qty: {item.quantity}</span>
-                      <span>${item.price.toFixed(2)}</span>
+                      <span>Rs. {item.price.toFixed(2)}</span>
                     </div>
                   ))}
                 </div>
 
                 <div className="order-footer">
-                  <div className="order-total">
-                    <strong>Total: ${order.totalAmount?.toFixed(2)}</strong>
+                    <div className="order-total">
+                    <strong>Total: Rs. {order.totalAmount?.toFixed(2)}</strong>
                   </div>
                   {order.trackingNumber && (
                     <div className="tracking">

@@ -47,7 +47,7 @@ const OrderSuccess = () => {
             </div>
             <div className="detail-row">
               <span>Total Amount:</span>
-              <strong>${order.totalAmount?.toFixed(2)}</strong>
+              <strong>Rs. {order.totalAmount?.toFixed(2)}</strong>
             </div>
             <div className="detail-row">
               <span>Status:</span>

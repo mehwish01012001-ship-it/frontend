@@ -360,11 +360,7 @@ const Checkout = () => {
                   </div>
 
                   <span>
-                    $
-                    {(
-                      (item.product?.price || item.price) *
-                      item.quantity
-                    ).toFixed(2)}
+                      Rs. {(((item.product?.price || item.price) * item.quantity)).toFixed(2)}
                   </span>
 
                 </div>
@@ -392,22 +388,22 @@ const Checkout = () => {
 
               <div>
                 <span>Subtotal</span>
-                <span>${subtotal.toFixed(2)}</span>
+                <span>Rs. {subtotal.toFixed(2)}</span>
               </div>
 
               <div>
                 <span>Shipping</span>
-                <span>${shipping.toFixed(2)}</span>
+                <span>Rs. {shipping.toFixed(2)}</span>
               </div>
 
               <div>
                 <span>Tax</span>
-                <span>${tax.toFixed(2)}</span>
+                <span>Rs. {tax.toFixed(2)}</span>
               </div>
 
               <div className="grand-total">
                 <span>Total</span>
-                <span>${orderTotal.toFixed(2)}</span>
+                <span>Rs. {orderTotal.toFixed(2)}</span>
               </div>
 
             </div>

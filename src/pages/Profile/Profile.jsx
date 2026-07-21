@@ -547,7 +547,7 @@ const Profile = () => {
                                     </div>
 
                                     <span className="item-qty">
-                                      ${((item.product?.price || item.price || 0) * (item.quantity || 1)).toFixed(2)}
+                                      Rs. {(((item.product?.price || item.price || 0) * (item.quantity || 1))).toFixed(2)}
                                     </span>
                                   </Link>
                                 ))}
@@ -556,7 +556,7 @@ const Profile = () => {
                               <div className="invoice-footer">
                                 <span>Grand Investment</span>
                                 <span className="grand-total">
-                                  ${Number(order.totalAmount || 0).toLocaleString(undefined, { minimumFractionDigits: 2 })}
+                                  Rs. {Number(order.totalAmount || 0).toLocaleString(undefined, { minimumFractionDigits: 2 })}
                                 </span>
                               </div>
                             </div>

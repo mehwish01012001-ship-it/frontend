@@ -176,7 +176,7 @@ const ProductDetails = () => {
     "offers": {
       "@type": "Offer",
       "url": canonicalUrl,
-      "priceCurrency": "USD",
+      "priceCurrency": "INR",
       "price": product.price,
       "itemCondition": "https://schema.org/NewCondition",
       "availability": product.stock > 0 ? "https://schema.org/InStock" : "https://schema.org/OutOfStock"
@@ -275,9 +275,9 @@ const ProductDetails = () => {
           </div>
 
           <div className="pd-price-row">
-            <span className="current-price">${product.price}</span>
+            <span className="current-price">Rs. {product.price}</span>
             {product.comparePrice && (
-              <span className="old-price">${product.comparePrice}</span>
+              <span className="old-price">Rs. {product.comparePrice}</span>
             )}
           </div>
 

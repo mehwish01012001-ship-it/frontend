@@ -182,8 +182,7 @@ const Cart = () => {
                   )}
 
                   <span className="price">
-                    $
-                    {item.price.toFixed(2)}
+                    Rs. {item.price.toFixed(2)}
                   </span>
 
                 </div>
@@ -214,11 +213,7 @@ const Cart = () => {
 
                 <div className="item-total">
 
-                  $
-                  {(
-                    item.quantity *
-                    item.price
-                  ).toFixed(2)}
+                  Rs. {(item.quantity * item.price).toFixed(2)}
 
                 </div>
 
@@ -305,28 +300,28 @@ const Cart = () => {
             <div className="summary-row">
               <span>Subtotal</span>
               <span>
-                ${subtotal.toFixed(2)}
+                Rs. {subtotal.toFixed(2)}
               </span>
             </div>
 
             <div className="summary-row">
               <span>Shipping</span>
               <span>
-                ${shipping.toFixed(2)}
+                Rs. {shipping.toFixed(2)}
               </span>
             </div>
 
             <div className="summary-row">
               <span>Tax</span>
               <span>
-                ${tax.toFixed(2)}
+                Rs. {tax.toFixed(2)}
               </span>
             </div>
 
             <div className="summary-row total">
               <span>Total</span>
               <span>
-                ${total.toFixed(2)}
+                Rs. {total.toFixed(2)}
               </span>
             </div>
 

@@ -24,9 +24,9 @@ const ShippingCalculator = ({ onCalculate = () => {} }) => {
       </div>
       <div className="form-group">
         <select value={method} onChange={e => setMethod(e.target.value)}>
-          <option value="standard">Standard Shipping - $5.00</option>
-          <option value="express">Express Shipping - $15.00</option>
-          <option value="overnight">Overnight - $30.00</option>
+          <option value="standard">Standard Shipping - Rs. 5.00</option>
+          <option value="express">Express Shipping - Rs. 15.00</option>
+          <option value="overnight">Overnight - Rs. 30.00</option>
         </select>
       </div>
       <button onClick={handleCalculate} className="btn-calculate">Calculate</button>

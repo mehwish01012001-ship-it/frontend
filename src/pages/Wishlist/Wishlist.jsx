@@ -151,11 +151,11 @@ const Wishlist = () => {
 
                     <div className="item-price">
                       <span className="current-price">
-                        ${item.price}
+                        Rs. {Number(item.price).toFixed(2)}
                       </span>
                       {item.comparePrice > item.price && (
                         <span className="compare-price">
-                          ${item.comparePrice}
+                          Rs. {Number(item.comparePrice).toFixed(2)}
                         </span>
                       )}
                     </div>

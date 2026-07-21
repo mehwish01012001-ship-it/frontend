@@ -49,7 +49,7 @@ const TrackOrder = () => {
           <div className="tracking-result">
             <h2>Order #{order.orderNumber}</h2>
             <p>Status: <strong>{order.orderStatus}</strong></p>
-            <p>Total: ${order.totalAmount?.toFixed(2)}</p>
+            <p>Total: Rs. {order.totalAmount?.toFixed(2)}</p>
             <div className="tracking-details">
               <p><strong>Placed:</strong> {new Date(order.createdAt).toLocaleDateString()}</p>
               {order.trackingNumber && <p><strong>Tracking #:</strong> {order.trackingNumber}</p>}
