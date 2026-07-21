@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Seo from '../../components/SEO';
 import './FAQ.css';
 
 const FAQ = () => {
@@ -52,7 +53,17 @@ const FAQ = () => {
   };
 
   return (
-    <div className="faq-page">
+    <>
+      <Seo
+        title="FAQ | RQ Fashion Customer Support"
+        description="Find answers to common questions about shipping, returns, product care, payments, and orders at RQ Fashion."
+        keywords="rq fashion faq, shipping questions, returns policy, payment options, customer support"
+        canonicalUrl={window.location.href}
+        ogTitle="FAQ | RQ Fashion Customer Support"
+        ogDescription="Find answers to common questions about shipping, returns, product care, payments, and orders at RQ Fashion."
+        twitterCard="summary_large_image"
+      />
+      <div className="faq-page">
       <div className="faq-hero">
         <h1>Frequently Asked Questions</h1>
         <p>Find answers to common questions about RQ Fashion</p>

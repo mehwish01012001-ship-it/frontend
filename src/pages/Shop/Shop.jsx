@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Helmet } from "react-helmet";
+import Seo from "../../components/SEO";
 import {
   FiSearch,
   FiSliders,
@@ -96,30 +96,19 @@ const Shop = () => {
   };
 
   return (
-    <section className="lux-shop">
-      {/* Dynamic SEO Header Meta Injection */}
-      <Helmet>
-        <title>{filters.category ? `${filters.category} | RQ Fashion Stitched Pret` : "Luxury Womens Stitched Pret & Ready to Wear | RQ Fashion"}</title>
-        <meta name="description" content={`Discover designer stitched women's outfits at RQ Fashion. Browse premium stitched clothing in our curated ${filters.category || 'seasonal'} luxury line. Elevate your wardrobe.`} />
-        <meta name="keywords" content={getDynamicKeywords()} />
-        <link rel="canonical" href={window.location.href} />
+    <>
+      <Seo
+        title={filters.category ? `${filters.category} | RQ Fashion Stitched Pret` : "Luxury Womens Stitched Pret & Ready to Wear | RQ Fashion"}
+        description={`Discover designer stitched women's outfits at RQ Fashion. Browse premium stitched clothing in our curated ${filters.category || 'seasonal'} luxury line. Elevate your wardrobe.`}
+        keywords={getDynamicKeywords()}
+        canonicalUrl={window.location.href}
+        ogTitle="Luxury Womens Stitched Pret & Ready to Wear | RQ Fashion"
+        ogDescription="Elegance stitched to perfection. Step into the world of luxury fabrics, modern silhouettes, and meticulous detailing."
+        twitterCard="summary_large_image"
+        schemaMarkup={structuredData}
+      />
 
-        {/* Open Graph / Facebook */}
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content="Luxury Womens Stitched Pret & Ready to Wear | RQ Fashion" />
-        <meta property="og:description" content="Elegance stitched to perfection. Step into the world of luxury fabrics, modern silhouettes, and meticulous detailing." />
-        <meta property="og:url" content={window.location.href} />
-
-        {/* Twitter */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Premium Womens Stitched Pret | RQ Fashion" />
-        <meta name="twitter:description" content="Shop designer ready-to-wear stitched luxury garments for women." />
-        
-        {/* Schema Markup Injection */}
-        <script type="application/ld+json">
-          {JSON.stringify(structuredData)}
-        </script>
-      </Helmet>
+      <section className="lux-shop">
 
       {/* Decorative Brand Ambience Elements */}
       <div className="bg-glow glow-1"></div>

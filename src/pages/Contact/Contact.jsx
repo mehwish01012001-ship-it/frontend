@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Seo from '../../components/SEO';
 import {
   FiMail,
   FiPhone,
@@ -86,7 +87,17 @@ const Contact = () => {
   ];
 
   return (
-    <section className="lux-contact">
+    <>
+      <Seo
+        title="Contact RQ Fashion | Premium Womens Clothing Support"
+        description="Contact RQ Fashion for customer support, order inquiries, premium fashion advice, and luxury women's clothing service."
+        keywords="contact rq fashion, premium womens fashion support, luxury clothing help, fashion customer service"
+        canonicalUrl={window.location.href}
+        ogTitle="Contact RQ Fashion | Premium Womens Clothing Support"
+        ogDescription="Contact RQ Fashion for customer support, order inquiries, premium fashion advice, and luxury women's clothing service."
+        twitterCard="summary_large_image"
+      />
+      <section className="lux-contact">
 
       {/* Background Effects */}
       <div className="contact-orb orb-1"></div>
@@ -300,6 +311,7 @@ const Contact = () => {
      
 
     </section>
+      </>
   );
 };
 

@@ -1,9 +1,21 @@
 import React from 'react';
+import Seo from '../../components/SEO';
 import './About.css';
 
 const About = () => {
   return (
-    <div className="about-page">
+    <>
+      <Seo
+        title="About RQ Fashion | Luxury Womens Clothing"
+        description="Learn about RQ Fashion's premium stitched clothing, elegant styling, and luxury craftsmanship for women."
+        keywords="about rq fashion, luxury womens clothing, stitched pret brand, premium fashion brand"
+        canonicalUrl={window.location.href}
+        ogTitle="About RQ Fashion | Luxury Womens Clothing"
+        ogDescription="Learn about RQ Fashion's premium stitched clothing, elegant styling, and luxury craftsmanship for women."
+        twitterCard="summary_large_image"
+      />
+
+      <div className="about-page">
       <div className="about-hero">
         <div className="container">
           <h1>About RQ Fashion</h1>
@@ -49,6 +61,7 @@ const About = () => {
         </section>
       </div>
     </div>
+      </>
   );
 };
 

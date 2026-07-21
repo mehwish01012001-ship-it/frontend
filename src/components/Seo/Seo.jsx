@@ -1,46 +1,9 @@
-// import React from 'react';
-// import { Helmet } from 'react-helmet-async';
 
-// const Seo = ({ title = 'RQ Fashion', description = '', keywords = '', image = '', url = '' }) => {
-//   const fullTitle = title.includes('RQ') ? title : `${title} | RQ Fashion`;
-//   const fullDescription = description || 'Premium fashion collection with latest trends and exclusive designs.';
-//   const defaultImage = image || '/og-image.jpg';
-//   const siteUrl = import.meta.env.VITE_APP_SITE_URL || 'https://rqfashion.com';
-//   const fullUrl = url ? `${siteUrl}${url}` : siteUrl;
-
-//   return (
-//     <Helmet>
-//       <title>{fullTitle}</title>
-//       <meta name="description" content={fullDescription} />
-//       <meta name="keywords" content={keywords} />
-//       <meta name="viewport" content="width=device-width, initial-scale=1" />
-      
-//       {/* Open Graph */}
-//       <meta property="og:title" content={fullTitle} />
-//       <meta property="og:description" content={fullDescription} />
-//       <meta property="og:image" content={defaultImage} />
-//       <meta property="og:url" content={fullUrl} />
-//       <meta property="og:type" content="website" />
-      
-//       {/* Twitter Card */}
-//       <meta name="twitter:card" content="summary_large_image" />
-//       <meta name="twitter:title" content={fullTitle} />
-//       <meta name="twitter:description" content={fullDescription} />
-//       <meta name="twitter:image" content={defaultImage} />
-      
-//       {/* Canonical */}
-//       <link rel="canonical" href={fullUrl} />
-//     </Helmet>
-//   );
-// };
-
-// export default Seo;
 
 
 
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import PropTypes from 'prop-types';
 
 const Seo = ({ 
   title = 'RQ Fashion', 
@@ -137,23 +100,6 @@ const Seo = ({
       )}
     </Helmet>
   );
-};
-
-Seo.propTypes = {
-  title: PropTypes.string,
-  description: PropTypes.string,
-  keywords: PropTypes.string,
-  image: PropTypes.string,
-  ogImage: PropTypes.string,
-  url: PropTypes.string,
-  canonicalUrl: PropTypes.string,
-  ogType: PropTypes.string,
-  ogTitle: PropTypes.string,
-  ogDescription: PropTypes.string,
-  twitterCard: PropTypes.string,
-  schemaMarkup: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
-  robots: PropTypes.string,
-  imageAlt: PropTypes.string,
 };
 
 export default Seo;

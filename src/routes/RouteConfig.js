@@ -25,6 +25,7 @@ const routeConfig = [
   { path: '/', component: Home },
   { path: '/shop', component: Shop },
   { path: '/product/:slug', component: ProductDetails },
+  { path: '/productdetails/:slug', component: ProductDetails },
 
   { path: '/cart', component: Cart },
   { path: '/wishlist', component: Wishlist, private: true },

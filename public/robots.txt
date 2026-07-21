@@ -1,9 +1,22 @@
 User-agent: *
 Allow: /
-Disallow: /admin
-Disallow: /private
-Sitemap: https://rqfashion.com/sitemap.xml
+Allow: /about
+Allow: /contact
+Allow: /faq
+Allow: /shop
+Allow: /productdetails
+Allow: /terms-conditions
+Allow: /privacy-policy
 
-# Block bots from accessing certain resources
-Disallow: /*.json$
-Disallow: /api/
+Disallow: /login
+Disallow: /register
+Disallow: /forgotpassword
+Disallow: /reset-password
+Disallow: /profile
+Disallow: /orders
+Disallow: /checkout
+Disallow: /addresses
+Disallow: /wishlist
+Disallow: /admin
+
+Sitemap: https://backend-production-a2eb.up.railway.app/sitemap.xml
