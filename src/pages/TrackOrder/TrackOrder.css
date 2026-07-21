@@ -1,0 +1,76 @@
+.track-order-page {
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  background: #faf8f5;
+}
+
+.track-order-card {
+  width: 100%;
+  max-width: 620px;
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 42px;
+  box-shadow: 0 28px 60px rgba(17, 17, 17, 0.08);
+}
+
+.track-order-card h1 {
+  margin-bottom: 12px;
+}
+
+.track-order-card p {
+  color: #666;
+  margin-bottom: 28px;
+}
+
+.track-order-form {
+  display: grid;
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+.track-order-form input {
+  padding: 16px 18px;
+  border: 1px solid #e7e7e7;
+  border-radius: 14px;
+  outline: none;
+}
+
+.btn-primary {
+  padding: 16px 24px;
+  border: none;
+  border-radius: 999px;
+  background: #111111;
+  color: #ffffff;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.25s ease;
+}
+
+.btn-primary:hover {
+  background: #333333;
+}
+
+.tracking-result {
+  margin-top: 24px;
+  padding: 26px;
+  background: #f8f7f3;
+  border-radius: 18px;
+}
+
+.tracking-result h2 {
+  margin-bottom: 10px;
+}
+
+.tracking-details p {
+  margin: 10px 0;
+}
+
+.error-message {
+  padding: 14px 16px;
+  background: #fdecea;
+  color: #c62828;
+  border-radius: 12px;
+}

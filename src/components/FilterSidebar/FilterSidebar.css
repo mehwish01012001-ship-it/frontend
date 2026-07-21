@@ -1,0 +1,102 @@
+/* Custom variables matching a high-end luxury fashion brand styling sheet */
+:root {
+  --bg-primary-soft: #fcfbfa;       /* Rich luxurious off-white background */
+  --accent-gold: #b99333;           /* Refined golden bronze signature color */
+  --accent-gold-light: #f5eedc;     /* Smooth, faded gold base for selected states */
+  --text-dark: #1a1a1a;             /* High contrast carbon black for optimal readability */
+  --text-muted: #666666;           /* Mid-ground neutral gray for peripheral text */
+  --border-light: rgba(185, 147, 51, 0.12); /* Subtle gold border tint */
+  --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.filter-sidebar {
+  background: var(--bg-primary-soft);
+  border: 1px solid var(--border-light);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 10px 30px rgba(185, 147, 51, 0.03);
+  font-family: inherit;
+  transition: var(--transition-smooth);
+}
+
+.filter-sidebar__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.filter-sidebar__header h3 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--text-dark);
+}
+
+.filter-sidebar__clear {
+  background: transparent;
+  border: none;
+  color: var(--accent-gold);
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: var(--transition-smooth);
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.filter-sidebar__clear:hover {
+  background: rgba(185, 147, 51, 0.08);
+  opacity: 0.9;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.filter-option-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.filter-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 8px;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  color: var(--text-dark);
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.filter-option:hover {
+  border-color: var(--accent-gold);
+  transform: translateY(-1px);
+}
+
+.filter-option.active {
+  background: var(--accent-gold-light);
+  border-color: var(--accent-gold);
+  color: #7a5a10;
+}
+
+.filter-option input {
+  accent-color: var(--accent-gold);
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+}
+

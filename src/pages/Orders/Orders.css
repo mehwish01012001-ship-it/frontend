@@ -1,0 +1,160 @@
+.orders-page {
+  min-height: 100vh;
+  background: #f8f6f2;
+  padding: 60px 20px;
+}
+
+.orders-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.orders-container > h1 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #111111;
+  margin-bottom: 40px;
+  letter-spacing: 1px;
+}
+
+.loading,
+.empty-orders {
+  background: #ffffff;
+  padding: 60px 40px;
+  border-radius: 8px;
+  text-align: center;
+  color: #666666;
+  font-size: 16px;
+}
+
+.orders-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.order-card {
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 24px;
+  border: 1px solid #e0e0e0;
+  transition: all 0.3s;
+}
+
+.order-card:hover {
+  border-color: #c9a86a;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.order-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #f3f3f3;
+  padding-bottom: 16px;
+}
+
+.order-header h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #111111;
+  margin-bottom: 4px;
+}
+
+.order-date {
+  font-size: 13px;
+  color: #999999;
+  margin: 0;
+}
+
+.order-status {
+  display: inline-block;
+  padding: 6px 16px;
+  border-radius: 20px;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.order-items {
+  margin-bottom: 16px;
+}
+
+.order-item {
+  display: grid;
+  grid-template-columns: 1fr 120px 120px;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid #f3f3f3;
+  font-size: 14px;
+  align-items: center;
+}
+
+.order-item:last-child {
+  border-bottom: none;
+}
+
+.order-item span:first-child {
+  color: #111111;
+  font-weight: 500;
+}
+
+.order-item span:nth-child(2),
+.order-item span:last-child {
+  color: #666666;
+  text-align: right;
+}
+
+.order-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 16px;
+}
+
+.order-total {
+  font-size: 15px;
+  color: #111111;
+}
+
+.tracking {
+  font-size: 13px;
+  color: #666666;
+}
+
+.tracking strong {
+  color: #111111;
+  margin-right: 8px;
+}
+
+@media (max-width: 768px) {
+  .orders-page {
+    padding: 40px 16px;
+  }
+
+  .orders-container > h1 {
+    font-size: 24px;
+  }
+
+  .order-card {
+    padding: 16px;
+  }
+
+  .order-item {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+
+  .order-item span:nth-child(2),
+  .order-item span:last-child {
+    text-align: left;
+  }
+
+  .order-footer {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+}

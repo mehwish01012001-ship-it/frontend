@@ -1,0 +1,144 @@
+.order-success-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8f6f2 0%, #ffffff 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.success-container {
+  background: #ffffff;
+  padding: 60px 40px;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  text-align: center;
+}
+
+.success-icon {
+  font-size: 80px;
+  color: #4caf50;
+  margin-bottom: 24px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 120px;
+  background: rgba(76, 175, 80, 0.1);
+  border-radius: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.success-container h1 {
+  font-size: 36px;
+  font-weight: 700;
+  color: #111111;
+  margin-bottom: 16px;
+  letter-spacing: 1px;
+}
+
+.success-message {
+  font-size: 16px;
+  color: #666666;
+  margin-bottom: 40px;
+  line-height: 1.6;
+}
+
+.order-details {
+  background: #f8f6f2;
+  border-radius: 8px;
+  padding: 24px;
+  margin-bottom: 40px;
+  text-align: left;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #e0e0e0;
+  font-size: 14px;
+}
+
+.detail-row:last-child {
+  border-bottom: none;
+}
+
+.detail-row span {
+  color: #666666;
+}
+
+.detail-row strong {
+  color: #111111;
+  font-weight: 600;
+}
+
+.order-actions {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.btn-primary,
+.btn-secondary {
+  flex: 1;
+  padding: 14px 24px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: block;
+  text-align: center;
+  border: none;
+}
+
+.btn-primary {
+  background: #111111;
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background: #c9a86a;
+}
+
+.btn-secondary {
+  background: #f8f6f2;
+  color: #111111;
+  border: 2px solid #111111;
+}
+
+.btn-secondary:hover {
+  background: #111111;
+  color: #ffffff;
+}
+
+.confirmation-email {
+  font-size: 13px;
+  color: #999999;
+}
+
+@media (max-width: 768px) {
+  .success-container {
+    padding: 40px 24px;
+  }
+
+  .success-icon {
+    font-size: 60px;
+    width: 100px;
+    height: 100px;
+  }
+
+  .success-container h1 {
+    font-size: 28px;
+  }
+
+  .order-actions {
+    flex-direction: column;
+  }
+}

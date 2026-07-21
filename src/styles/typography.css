@@ -1,0 +1,15 @@
+h1,h2,h3,h4,h5,h6 {
+  font-family: 'Inter', sans-serif;
+  color: var(--text);
+  line-height: 1.1;
+}
+
+p,span,label,button,a {
+  color: var(--text);
+}
+
+h1 { font-size: clamp(2rem, 4vw, 3.5rem); }
+
+h2 { font-size: clamp(1.75rem, 3.5vw, 2.5rem); }
+
+h3 { font-size: clamp(1.5rem, 3vw, 2rem); }

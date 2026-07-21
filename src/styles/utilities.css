@@ -1,0 +1,19 @@
+.container {
+  width: min(1400px, 100% - 28px);
+  margin: 0 auto;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.section-heading {
+  margin-bottom: 24px;
+  font-weight: 700;
+}

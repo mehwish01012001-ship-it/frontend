@@ -1,0 +1,17 @@
+@media (max-width: 1024px) {
+  .container {
+    width: min(100%, 100% - 28px);
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: min(100%, 100% - 20px);
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    width: min(100%, 100% - 14px);
+  }
+}

@@ -1,0 +1,565 @@
+/* ==========================================================================
+   PREMIUM ELECTRIC NAVBAR SYSTEM - RQ FASHION (2026)
+   ========================================================================== */
+
+:root {
+  --bg-dark-90: rgba(10, 10, 12, 0.9);
+  --bg-dark-95: rgba(7, 7, 9, 0.95);
+  --electric-cyan: #00f3ff;
+  --electric-purple: #9d00ff;
+  --text-primary: #ffffff;
+  --text-muted: #8a8a93;
+  --border-glow: rgba(0, 243, 255, 0.2);
+  --transition-smooth: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Base Body Hack for Backdrop Blurs */
+body:has(.sidebar-visible) {
+  overflow: hidden;
+}
+
+/* ==========================================================================
+   HEADER & MAIN BAR STYLING
+   ========================================================================== */
+
+.premium-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  z-index: 1000;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  transition: var(--transition-smooth);
+}
+
+/* Scrolled State with Glassmorphism */
+.navbar-scrolled {
+  height: 70px;
+  background: rgba(10, 10, 12, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Hides navbar behind sidebar smoothly if needed */
+.navbar-hidden-behind-sidebar {
+  opacity: 0;
+  transform: translateY(-20px);
+  pointer-events: none;
+}
+
+/* Dynamic Top Accent Glow Line */
+.navbar-glow-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--electric-cyan), var(--electric-purple), transparent);
+  background-size: 200% 100%;
+  animation: electric-flow 4s linear infinite;
+}
+
+.navbar-container {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-section {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.left-section { justify-content: flex-start; }
+.center-section { justify-content: center; }
+.right-section { justify-content: flex-end; gap: 24px; }
+
+/* ==========================================================================
+   LEFT SECTION: BURGER MENU TRIGGER
+   ========================================================================== */
+
+.electric-menu-trigger {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 10px;
+  z-index: 1001;
+}
+
+.burger-line {
+  display: block;
+  width: 28px;
+  height: 2px;
+  background-color: var(--text-primary);
+  transition: var(--transition-smooth);
+  border-radius: 2px;
+}
+
+/* Hamburger Interactions */
+.electric-menu-trigger:hover .burger-line {
+  background-color: var(--electric-cyan);
+  box-shadow: 0 0 10px var(--electric-cyan);
+}
+
+.electric-menu-trigger:hover .line-2 {
+  width: 18px;
+  transform: translateX(10px);
+}
+
+.electric-menu-trigger.active .line-1 {
+  transform: translateY(8px) rotate(45deg);
+  background-color: var(--electric-cyan);
+}
+.electric-menu-trigger.active .line-2 {
+  opacity: 0;
+  transform: translateX(-20px);
+}
+.electric-menu-trigger.active .line-3 {
+  transform: translateY(-8px) rotate(-45deg);
+  background-color: var(--electric-cyan);
+}
+
+/* ==========================================================================
+   CENTER SECTION: KINETIC LOGO
+   ========================================================================== */
+
+.premium-logo-link {
+  text-decoration: none;
+  position: relative;
+  padding: 5px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo-text-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: var(--font-family);
+}
+
+.logo-brand {
+  font-size: 28px;
+  font-weight: 900;
+  letter-spacing: 6px;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  transition: var(--transition-smooth);
+}
+
+.logo-subtext {
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 4px;
+  color: var(--text-muted);
+  margin-top: -2px;
+  transition: var(--transition-smooth);
+}
+
+/* Kinetic Logo Hover State */
+.premium-logo-link:hover .logo-brand {
+  color: var(--electric-cyan);
+  text-shadow: 0 0 15px rgba(0, 243, 255, 0.6);
+  transform: scale(1.03);
+}
+
+.premium-logo-link:hover .logo-subtext {
+  color: var(--text-primary);
+  letter-spacing: 6px;
+}
+
+.logo-electric-underline {
+  position: absolute;
+  bottom: -2px;
+  width: 0%;
+  height: 1px;
+  background: var(--electric-cyan);
+  box-shadow: 0 0 8px var(--electric-cyan);
+  transition: var(--transition-smooth);
+}
+
+.premium-logo-link:hover .logo-electric-underline {
+  width: 100%;
+}
+
+/* ==========================================================================
+   RIGHT SECTION: ACTIONS & PULSING BADGES
+   ========================================================================== */
+
+.electric-action-btn,
+.electric-action-link {
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  font-size: 20px;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  text-decoration: none;
+  transition: var(--transition-smooth);
+  border: 1px solid transparent;
+}
+
+.btn-icon {
+  z-index: 2;
+  transition: var(--transition-smooth);
+}
+
+/* Subtle Glow Layers behind buttons */
+.btn-glow-layer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,243,255,0.15) 0%, transparent 70%);
+  opacity: 0;
+  transition: var(--transition-smooth);
+  transform: scale(0.6);
+  z-index: 1;
+}
+
+.electric-action-btn:hover,
+.electric-action-link:hover {
+  color: var(--electric-cyan);
+  border-color: rgba(0, 243, 255, 0.2);
+  box-shadow: 0 0 15px rgba(0, 243, 255, 0.1);
+}
+
+.electric-action-btn:hover .btn-glow-layer,
+.electric-action-link:hover .btn-glow-layer {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* High Voltage Badge Systems */
+.electric-badge {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  font-family: var(--font-family);
+  font-size: 10px;
+  font-weight: 700;
+  background: var(--text-primary);
+  color: #000;
+  min-width: 16px;
+  height: 16px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4px;
+  z-index: 3;
+  transition: var(--transition-smooth);
+}
+
+.pulse-effect {
+  background: var(--electric-purple);
+  color: #fff;
+  animation: badge-pulse 2s infinite linear;
+}
+
+.high-voltage {
+  background: var(--electric-cyan);
+  color: #000;
+  box-shadow: 0 0 10px var(--electric-cyan);
+}
+
+.cart-active-electric {
+  border-color: rgba(0, 243, 255, 0.4);
+}
+
+/* ==========================================================================
+   ATMOSPHERIC BACKDROP & SIDEBAR
+   ========================================================================== */
+
+.electric-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(4, 4, 6, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 998;
+  animation: fade-in 0.4s ease forwards;
+}
+
+.electric-sidebar {
+  position: fixed;
+  top: 0;
+  left: -440px;
+  width: 440px;
+  height: 100vh;
+  background: var(--bg-dark-95);
+  border-right: 1px solid rgba(255, 255, 255, 0.03);
+  box-shadow: 20px 0 80px rgba(0, 0, 0, 0.7);
+  z-index: 999;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.sidebar-visible {
+  transform: translateX(440px);
+}
+
+.sidebar-inner {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 50px 40px;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+/* Sidebar Header */
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sidebar-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.sidebar-accent-indicator {
+  width: 4px;
+  height: 16px;
+  background: var(--electric-cyan);
+  box-shadow: 0 0 8px var(--electric-cyan);
+  border-radius: 2px;
+}
+
+.sidebar-title-wrap h3 {
+  font-family: var(--font-family);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.sidebar-close-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 22px;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebar-close-btn:hover {
+  color: var(--text-primary);
+  transform: rotate(90deg);
+}
+
+/* ==========================================================================
+   STAGGER-ANIMATED NAV LINKS
+   ========================================================================== */
+
+.sidebar-nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin: 60px 0;
+}
+
+.animated-nav-item {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  font-family: var(--font-family);
+  position: relative;
+  padding: 10px 0;
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: var(--transition-smooth), opacity 0.5s ease;
+}
+
+/* CSS Animation orchestration triggered on sidebar reveal */
+.sidebar-visible .animated-nav-item {
+  opacity: 1;
+  transform: translateX(0);
+  /* Stagger delays managed cleanly via CSS Custom Props passed from React loop */
+  transition-delay: calc(var(--nav-index) * 0.08s + 0.2s);
+}
+
+.link-number {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--electric-cyan);
+  margin-right: 20px;
+  font-variant-numeric: tabular-nums;
+  opacity: 0.6;
+}
+
+.link-text {
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--text-primary);
+  letter-spacing: 1px;
+  transition: var(--transition-smooth);
+}
+
+.link-arrow-icon {
+  font-size: 18px;
+  color: var(--electric-cyan);
+  margin-left: auto;
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: var(--transition-smooth);
+}
+
+/* Link Interactions */
+.animated-nav-item:hover .link-text {
+  transform: translateX(10px);
+  color: var(--electric-cyan);
+  text-shadow: 0 0 15px rgba(0, 243, 255, 0.3);
+}
+
+.animated-nav-item:hover .link-arrow-icon {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ==========================================================================
+   SIDEBAR FOOTER & ACTION GRID
+   ========================================================================== */
+
+.footer-actions-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.grid-action-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 18px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-decoration: none;
+  font-family: var(--font-family);
+  color: var(--text-primary);
+  position: relative;
+  transition: var(--transition-smooth);
+}
+
+.grid-action-card svg {
+  font-size: 20px;
+  color: var(--text-muted);
+  transition: var(--transition-smooth);
+}
+
+.grid-action-card span {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.mini-badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: rgba(255, 255, 255, 0.1);
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 6px;
+}
+
+/* Hover effects for grid buttons */
+.grid-action-card:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(0, 243, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.grid-action-card:hover svg {
+  color: var(--electric-cyan);
+  filter: drop-shadow(0 0 5px var(--electric-cyan));
+}
+
+/* High Voltage Primary Checkout Card */
+.active-card {
+  background: linear-gradient(135deg, rgba(0, 243, 255, 0.03), rgba(157, 0, 255, 0.03));
+  border-color: rgba(0, 243, 255, 0.15);
+}
+
+.active-card:hover {
+  border-color: var(--electric-cyan);
+  box-shadow: 0 0 20px rgba(0, 243, 255, 0.1);
+}
+
+.active-card .mini-badge {
+  background: var(--electric-cyan);
+  color: #000;
+}
+
+.sidebar-copyright {
+  font-family: var(--font-family);
+  font-size: 10px;
+  color: var(--text-muted);
+  letter-spacing: 1px;
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.03);
+  padding-top: 20px;
+  margin: 0;
+}
+
+/* ==========================================================================
+   ANIMATIONS & PERFORMANCE OPTIMIZATIONS
+   ========================================================================== */
+
+@keyframes electric-flow {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+@keyframes badge-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(157, 0, 255, 0.7); }
+  70% { box-shadow: 0 0 0 6px rgba(157, 0, 255, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(157, 0, 255, 0); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Responsive Scaling down for smaller screen targets */
+@media (max-width: 768px) {
+  .navbar-container { padding: 0 20px; }
+  .electric-sidebar { width: 100%; left: -100%; }
+  .sidebar-visible { transform: translateX(100%); }
+  .right-section { gap: 10px; }
+}

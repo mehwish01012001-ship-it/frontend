@@ -1,0 +1,230 @@
+/* ==========================================================================
+   TERMS & CONDITIONS COMPONENT STYLES
+   Scoped strictly under .terms-page to prevent any global style bleeding
+   ========================================================================== */
+
+/* Main Page Wrapper */
+.terms-page {
+  width: 100%;
+  background-color: #fcfbf7; /* Premium off-white brand background */
+  font-family: "Playfair Display", "Didot", "Helvetica Neue", serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Header Section with Luxury Aesthetic */
+.terms-page .terms-header {
+  background: linear-gradient(135deg, #111111 0%, #1a1a1a 50%, #262626 100%);
+  color: #ffffff;
+  padding: 100px 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Elegant Accent Line behind the Header */
+.terms-page .terms-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 1px;
+  background-color: #d4af37; /* Premium gold accent */
+}
+
+.terms-page .terms-header h1 {
+  font-family: "Playfair Display", "Didot", serif;
+  font-size: 44px;
+  font-weight: 400;
+  margin-bottom: 20px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #fcfbf7;
+}
+
+.terms-page .terms-header p {
+  font-family: "Montserrat", "Helvetica Neue", sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #c5a880; /* Soft champagne gold */
+  margin: 0;
+}
+
+/* Content Container Wrapper */
+.terms-page .terms-content {
+  background-color: #fcfbf7; /* Off-white container */
+  padding: 90px 24px;
+}
+
+.terms-page .container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Structured Sections */
+.terms-page section {
+  margin-bottom: 56px;
+  border-bottom: 1px solid #f2eee6; /* Delicate structural divider */
+  padding-bottom: 40px;
+  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.terms-page section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+/* Typography for Section Headings */
+.terms-page section h2 {
+  font-family: "Playfair Display", "Didot", serif;
+  font-size: 22px;
+  font-weight: 500;
+  color: #111111;
+  margin-top: 0;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+  position: relative;
+  display: inline-block;
+}
+
+/* Typography for Body Text */
+.terms-page section p {
+  font-family: "Montserrat", "Helvetica Neue", sans-serif;
+  color: #4a4a4a;
+  font-size: 14px;
+  line-height: 1.9;
+  margin-top: 0;
+  margin-bottom: 16px;
+  letter-spacing: 0.3px;
+}
+
+/* List Styling (e.g. Section 2 License Rules) */
+.terms-page section ul {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0 0 4px;
+}
+
+.terms-page section ul li {
+  font-family: "Montserrat", "Helvetica Neue", sans-serif;
+  position: relative;
+  font-size: 13.5px;
+  color: #5a5a5a;
+  line-height: 1.8;
+  margin-bottom: 14px;
+  padding-left: 24px;
+  letter-spacing: 0.3px;
+}
+
+/* Elegant Gold Dot Custom Bullet Points */
+.terms-page section ul li::before {
+  content: "•";
+  position: absolute;
+  left: 4px;
+  color: #c5a880; /* Elegant gold dot */
+  font-size: 18px;
+  line-height: 1;
+  top: -1px;
+}
+
+.terms-page section ul li:last-child {
+  margin-bottom: 0;
+}
+
+/* Contact Information Highlight Box */
+.terms-page section:last-of-type {
+  background: #f5f2eb;
+  padding: 40px;
+  border: 1px solid #e8e3d7;
+  border-radius: 0px; /* Sharp, high-fashion edges */
+}
+
+.terms-page section:last-of-type h2 {
+  color: #111111;
+}
+
+.terms-page section:last-of-type p {
+  margin-bottom: 0;
+  color: #333333;
+}
+
+/* Links inside terms (e.g. email or web links) styling */
+.terms-page section a {
+  color: #111111;
+  text-decoration: none;
+  font-weight: 500;
+  border-bottom: 1px solid #c5a880;
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.terms-page section a:hover {
+  color: #c5a880;
+  border-bottom-color: #111111;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN (TABLETS & MOBILE DEVICES)
+   ========================================================================== */
+
+@media (max-width: 900px) {
+  .terms-page .terms-header {
+    padding: 80px 24px;
+  }
+
+  .terms-page .terms-header h1 {
+    font-size: 36px;
+    letter-spacing: 2px;
+  }
+
+  .terms-page .terms-content {
+    padding: 70px 24px;
+  }
+
+  .terms-page section {
+    margin-bottom: 48px;
+    padding-bottom: 32px;
+  }
+}
+
+@media (max-width: 600px) {
+  .terms-page .terms-header {
+    padding: 60px 16px;
+  }
+
+  .terms-page .terms-header h1 {
+    font-size: 28px;
+    letter-spacing: 1.5px;
+  }
+
+  .terms-page .terms-content {
+    padding: 48px 16px;
+  }
+
+  .terms-page section {
+    margin-bottom: 40px;
+    padding-bottom: 24px;
+  }
+
+  .terms-page section h2 {
+    font-size: 19px;
+    margin-bottom: 16px;
+  }
+
+  .terms-page section p {
+    font-size: 13px;
+    line-height: 1.8;
+  }
+
+  .terms-page section ul li {
+    font-size: 12.5px;
+    padding-left: 20px;
+  }
+
+  .terms-page section:last-of-type {
+    padding: 24px;
+  }
+}

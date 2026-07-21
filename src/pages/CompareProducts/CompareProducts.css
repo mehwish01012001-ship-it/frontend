@@ -1,0 +1,44 @@
+.compare-products-page {
+  padding: 40px 0;
+}
+
+.compare-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.compare-header h1 {
+  font-size: 34px;
+  margin-bottom: 12px;
+}
+
+.compare-header p {
+  color: #666;
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+.compare-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.compare-card {
+  background: #ffffff;
+  border: 1px solid #ececec;
+  border-radius: 12px;
+  padding: 24px;
+  min-height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #333333;
+}
+
+@media (max-width: 900px) {
+  .compare-grid {
+    grid-template-columns: 1fr;
+  }
+}

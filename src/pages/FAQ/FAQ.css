@@ -1,0 +1,246 @@
+/* ==========================================================================
+   PREMIUM FAQ PAGE STYLES (SCOPED TO .faq-page TO PREVENT GLOBAL CONFLICTS)
+   ========================================================================== */
+
+/* Main Wrapper */
+.faq-page {
+  width: 100%;
+  background-color: #faf9f6; /* Elegant premium off-white background */
+  font-family: 'Playfair Display', 'Didot', 'Helvetica Neue', serif; /* Luxury typography feel */
+}
+
+/* Scoped Container to replace generic .container */
+.faq-page .faq-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ==========================================================================
+   HERO SECTION (Sophisticated, Minimalist Off-White Aesthetic)
+   ========================================================================== */
+.faq-page .faq-hero {
+  background: radial-gradient(circle at top, #ffffff 0%, #f7f4ed 100%);
+  padding: 100px 20px 80px;
+  text-align: center;
+  position: relative;
+}
+
+/* Subtle luxury accent line under the hero */
+.faq-page .faq-hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 1px;
+  background-color: #c9a86a; /* Warm premium gold */
+}
+
+.faq-page .faq-hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 42px;
+  font-weight: 300;
+  color: #1a1a1a;
+  margin-bottom: 16px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.faq-page .faq-hero p {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  color: #707070;
+  letter-spacing: 1px;
+  font-weight: 300;
+}
+
+/* ==========================================================================
+   FAQ ACCORDION CONTENT
+   ========================================================================== */
+.faq-page .faq-content {
+  background: #faf9f6;
+  padding: 80px 0;
+}
+
+.faq-page .faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Elegant individual item block */
+.faq-page .faq-item {
+  background: #ffffff;
+  border: 1px solid #eae6df;
+  border-radius: 0px; /* Sharp, high-fashion luxury corners */
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Premium Hover & Active States */
+.faq-page .faq-item:hover {
+  border-color: #c9a86a;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(201, 168, 106, 0.08);
+}
+
+.faq-page .faq-item.expanded {
+  border-color: #c9a86a;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.04);
+}
+
+/* Button & Question Header */
+.faq-page .faq-question {
+  width: 100%;
+  background: #ffffff;
+  border: none;
+  padding: 24px 30px;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  transition: all 0.3s ease;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: #222222;
+  letter-spacing: 0.5px;
+}
+
+.faq-page .faq-item.expanded .faq-question {
+  background: #fdfcf9;
+  color: #c9a86a;
+}
+
+.faq-page .faq-question:hover {
+  background: #fdfcf9;
+}
+
+/* Custom Interactive Gold Icon */
+.faq-page .toggle-icon {
+  font-size: 22px;
+  color: #c9a86a;
+  font-weight: 200;
+  flex-shrink: 0;
+  transition: transform 0.4s ease, color 0.3s ease;
+}
+
+.faq-page .faq-item.expanded .toggle-icon {
+  transform: rotate(180deg);
+  color: #1a1a1a;
+}
+
+/* Premium smooth dynamic height/slide transition */
+.faq-page .faq-answer {
+  padding: 0 30px 28px;
+  background: #fdfcf9;
+  border-top: 1px solid #f2ede4;
+  animation: elegantFadeIn 0.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+.faq-page .faq-answer p {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  color: #555555;
+  line-height: 1.8;
+  margin: 0;
+  letter-spacing: 0.3px;
+  font-weight: 300;
+}
+
+/* Beautiful custom fade-in and slide animation */
+@keyframes elegantFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================================================
+   CONTACT SECTION (Deep Minimalist Dark Accent Footer)
+   ========================================================================== */
+.faq-page .faq-contact {
+  background: #111111; /* Sharp contrast for premium identity */
+  color: #ffffff;
+  padding: 80px 20px;
+  text-align: center;
+  position: relative;
+}
+
+.faq-page .faq-contact h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 30px;
+  font-weight: 300;
+  margin-bottom: 16px;
+  letter-spacing: 1.5px;
+}
+
+.faq-page .faq-contact p {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  color: #a5a5a5;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+}
+
+.faq-page .faq-contact p a {
+  color: #c9a86a;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+  font-weight: 500;
+}
+
+.faq-page .faq-contact p a:hover {
+  opacity: 0.8;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN ADAPTABILITY
+   ========================================================================== */
+@media (max-width: 768px) {
+  .faq-page .faq-hero {
+    padding: 80px 16px 60px;
+  }
+
+  .faq-page .faq-hero h1 {
+    font-size: 32px;
+    letter-spacing: 1px;
+  }
+
+  .faq-page .faq-hero p {
+    font-size: 13px;
+  }
+
+  .faq-page .faq-content {
+    padding: 50px 0;
+  }
+
+  .faq-page .faq-question {
+    padding: 20px;
+    font-size: 14px;
+  }
+
+  .faq-page .faq-answer {
+    padding: 0 20px 20px;
+  }
+
+  .faq-page .toggle-icon {
+    font-size: 18px;
+  }
+
+  .faq-page .faq-contact {
+    padding: 60px 16px;
+  }
+
+  .faq-page .faq-contact h2 {
+    font-size: 24px;
+  }
+}

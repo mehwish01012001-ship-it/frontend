@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /private
+Sitemap: https://rqfashion.com/sitemap.xml
+
+# Block bots from accessing certain resources
+Disallow: /*.json$
+Disallow: /api/

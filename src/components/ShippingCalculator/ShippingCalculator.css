@@ -1,0 +1,48 @@
+.shipping-calculator {
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #e5e5e5;
+}
+
+.shipping-calculator h3 {
+  margin: 0 0 16px;
+  font-size: 16px;
+  color: #111;
+}
+
+.form-group {
+  margin-bottom: 12px;
+}
+
+.shipping-calculator input,
+.shipping-calculator select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  font-family: inherit;
+}
+
+.shipping-calculator input:focus,
+.shipping-calculator select:focus {
+  outline: none;
+  border-color: #111;
+}
+
+.btn-calculate {
+  width: 100%;
+  padding: 10px;
+  background: #111;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+
+.btn-calculate:hover {
+  background: #333;
+}

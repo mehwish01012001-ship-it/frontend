@@ -1,0 +1,580 @@
+/* /* ==========================================================================
+   PREMIUM WOMEN'S APPAREL BRAND - THEME COLOR CONSTANTS
+   ========================================================================== */
+:root {
+  --theme-bg-main: #FAF8F5; /* Elegant Ivory White base */
+  --theme-bg-card: #FFFFFF;
+  --theme-offwhite-dark: #F3EEE3; /* Luxury warm beige accents */
+  --text-main: #1C1A17; /* High contrast rich charcoal-black */
+  --text-muted: #6B655B; /* Elegant warm-gray */
+  --brand-primary: #C5A880; /* Refined muted luxury champagne gold */
+  --brand-gold-hover: #B0926A;
+  --border-light: #EBE5DB;
+  --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ==========================================================================
+   PAGE STRUCTURING
+   ========================================================================== */
+.pd-page {
+  min-height: 100vh;
+  padding: 80px 24px 120px;
+  background: var(--theme-bg-main);
+  color: var(--text-main);
+  font-family: 'Playfair Display', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  overflow-x: hidden;
+}
+
+.pd-container {
+  max-width: 1300px;
+  margin: 35px auto;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 80px;
+  align-items: start;
+}
+
+/* ==========================================================================
+   LEFT SIDE - IMAGE EXHIBIT (STICKY GALLERY)
+   ========================================================================== */
+.pd-gallery {
+  position: sticky;
+  top: 100px;
+}
+
+.pd-main-image {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  background: #FFF;
+  border: 1px solid var(--border-light);
+  box-shadow: 0 15px 45px rgba(28, 26, 23, 0.04);
+}
+
+.pd-main-image img,
+.pd-main-image .pd-main-media {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  display: block;
+  transition: var(--transition-smooth);
+  background: #000;
+}
+
+.pd-main-image .pd-main-media {
+  min-height: 420px;
+}
+
+.pd-main-image:hover img,
+.pd-main-image:hover .pd-main-media {
+  transform: scale(1.05);
+}
+
+.pd-media-badge {
+  position: absolute;
+  left: 16px;
+  bottom: 16px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: rgba(20, 20, 18, 0.75);
+  color: #fff;
+  font-size: 11px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  z-index: 2;
+}
+
+/* ==========================================================================
+   MINIMALIST WISHLIST TOGGLE
+   ========================================================================== */
+.wishlist-btn {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--border-light);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: var(--text-muted);
+  cursor: pointer;
+  z-index: 10;
+  transition: var(--transition-smooth);
+}
+
+.wishlist-btn:hover {
+  transform: translateY(-2px);
+  color: #D32F2F;
+  border-color: #F8D7DA;
+  background: #FFF;
+}
+
+.wishlist-btn.active {
+  background: #D32F2F;
+  color: #FFF;
+  border-color: #D32F2F;
+}
+
+/* ==========================================================================
+   MINIMALIST THUMBNAIL TRACK
+   ========================================================================== */
+.pd-thumbnails {
+  display: flex;
+  gap: 16px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.thumb {
+  width: 80px;
+  height: 110px;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  background: #FFF;
+  border: 1px solid var(--border-light);
+  padding: 0;
+  transition: var(--transition-smooth);
+}
+
+.thumb img,
+.thumb-video-preview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.thumb-video-preview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #c5a880, #1c1a17);
+  color: #fff;
+  font-size: 18px;
+}
+
+.thumb:hover {
+  transform: translateY(-4px);
+  border-color: var(--brand-primary);
+}
+
+.thumb.active {
+  border-color: var(--brand-primary);
+  outline: 2px solid var(--brand-primary);
+  outline-offset: -3px;
+}
+
+/* ==========================================================================
+   RIGHT SIDE - DETAIL SPECIFICATIONS PANELS
+   ========================================================================== */
+.pd-content {
+  background: var(--theme-bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: 24px;
+  padding: 48px;
+  box-shadow: 0 10px 40px rgba(28, 26, 23, 0.02);
+}
+
+.pd-badge {
+  display: inline-block;
+  background: var(--theme-offwhite-dark);
+  color: var(--text-muted);
+  padding: 6px 14px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+.pd-title {
+  font-size: 34px;
+  font-weight: 500;
+  color: var(--text-main);
+  line-height: 1.25;
+  letter-spacing: -0.5px;
+  margin-bottom: 12px;
+}
+
+.pd-rating {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--brand-primary);
+  margin-bottom: 28px;
+  font-size: 14px;
+}
+
+.pd-rating span {
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+/* ==========================================================================
+   PRODUCT PRICING
+   ========================================================================== */
+.pd-price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 30px;
+}
+
+.current-price {
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.old-price {
+  color: var(--text-muted);
+  text-decoration: line-through;
+  font-size: 18px;
+}
+
+.pd-short-desc {
+  color: var(--text-muted);
+  line-height: 1.75;
+  margin-bottom: 35px;
+  font-size: 15px;
+}
+
+/* ==========================================================================
+   INTERACTIVE BUTTON ATTRIBUTES
+   ========================================================================== */
+.pd-attribute-section {
+  margin-bottom: 30px;
+}
+
+.pd-section-label {
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+  color: var(--text-main);
+}
+
+.size-wrapper,
+.color-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.size-wrapper button,
+.color-wrapper button {
+  min-width: 60px;
+  height: 44px;
+  border: 1px solid var(--border-light);
+  border-radius: 6px;
+  background: var(--theme-bg-main);
+  color: var(--text-main);
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 14px;
+  transition: var(--transition-smooth);
+}
+
+.size-wrapper button:hover,
+.color-wrapper button:hover {
+  border-color: var(--brand-primary);
+  background: var(--theme-bg-card);
+}
+
+.size-wrapper button.active,
+.color-wrapper button.active {
+  background: var(--brand-primary);
+  color: #FFF;
+  border-color: var(--brand-primary);
+  box-shadow: 0 4px 12px rgba(197, 168, 128, 0.2);
+}
+
+/* ==========================================================================
+   QUANTITY ELEMENT SELECTORS
+   ========================================================================== */
+.pd-qty-section {
+  margin-bottom: 35px;
+}
+
+.quantity-box {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  background: var(--theme-bg-main);
+}
+
+.quantity-box button {
+  width: 48px;
+  height: 48px;
+  border: none;
+  background: transparent;
+  color: var(--text-main);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  transition: var(--transition-smooth);
+}
+
+.quantity-box button:hover {
+  background: var(--theme-offwhite-dark);
+}
+
+.quantity-value {
+  padding: 0 16px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   CHECKOUT BUTTON GROUP
+   ========================================================================== */
+.action-buttons {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.add-cart-btn,
+.buy-now-btn {
+  flex: 1;
+  height: 56px;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: var(--transition-smooth);
+}
+
+.add-cart-btn {
+  background: var(--text-main);
+  color: #FFF;
+}
+
+.add-cart-btn:hover {
+  background: #33302B;
+  transform: translateY(-2px);
+}
+
+.buy-now-btn {
+  background: var(--brand-primary);
+  color: #FFF;
+}
+
+.buy-now-btn:hover {
+  background: var(--brand-gold-hover);
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   TRUST BADGES
+   ========================================================================== */
+.product-features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  border-top: 1px solid var(--border-light);
+  padding-top: 30px;
+}
+
+.product-features div {
+  text-align: center;
+  font-size: 11px;
+  color: var(--text-muted);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.product-features svg {
+  font-size: 20px;
+  color: var(--brand-primary);
+}
+
+/* ==========================================================================
+   TABS PANEL SYSTEM
+   ========================================================================== */
+.pd-tabs-container {
+  max-width: 1300px;
+  margin: 80px auto 0;
+}
+
+.pd-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  border-bottom: 1px solid var(--border-light);
+  margin-bottom: 30px;
+}
+
+.pd-tabs button {
+  border: none;
+  background: transparent;
+  padding: 16px 24px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-muted);
+  position: relative;
+  transition: var(--transition-smooth);
+}
+
+.pd-tabs button:hover {
+  color: var(--text-main);
+}
+
+.pd-tabs button.active {
+  color: var(--text-main);
+}
+
+.pd-tabs button.active::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--brand-primary);
+}
+
+/* ==========================================================================
+   TAB SUB-CONTENT INTERFACE
+   ========================================================================== */
+.pd-tab-content {
+  background: var(--theme-bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: 16px;
+  padding: 40px;
+  min-height: 200px;
+  box-shadow: 0 10px 40px rgba(28, 26, 23, 0.01);
+}
+
+.tab-paragraph {
+  color: var(--text-muted);
+  line-height: 1.8;
+  font-size: 15px;
+}
+
+.details-grid {
+  display: grid;
+  gap: 12px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.grid-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 14px 18px;
+  background: var(--theme-bg-main);
+  border-radius: 6px;
+  font-size: 14px;
+  border: 1px solid rgba(235, 229, 219, 0.5);
+}
+
+.grid-row span {
+  color: var(--text-muted);
+}
+
+.grid-row strong {
+  color: var(--text-main);
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   LOADER & SPINNERS
+   ========================================================================== */
+.pd-loader-container {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--theme-bg-main);
+  gap: 16px;
+}
+
+.pd-spinner {
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--border-light);
+  border-top-color: var(--brand-primary);
+  border-radius: 50%;
+  animation: pd-spin 1s linear infinite;
+}
+
+.pd-loader-text {
+  font-size: 14px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+@keyframes pd-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ==========================================================================
+   DEVICE-RESPONSIVENESS MEDIA QUERIES
+   ========================================================================== */
+@media (max-width: 1200px) {
+  .pd-container {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+  .pd-gallery {
+    position: relative;
+    top: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .pd-page {
+    padding: 40px 16px 80px;
+  }
+  .pd-content {
+    padding: 24px;
+  }
+  .pd-title {
+    font-size: 26px;
+  }
+  .current-price {
+    font-size: 24px;
+  }
+  .pd-main-image img {
+    aspect-ratio: 4 / 5;
+  }
+  .thumb {
+    width: 70px;
+    height: 92px;
+  }
+  .action-buttons {
+    flex-direction: column;
+  }
+  .product-features {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .pd-tab-content {
+    padding: 24px;
+  }
+}
