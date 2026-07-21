@@ -7,6 +7,7 @@ import {
   FiStar,
   FiAlertCircle
 } from "react-icons/fi";
+import { API_BASE_URL } from "../../utils/constants";
 import "./BrandStory.css";
 
 const fallbackStoryData = {
@@ -43,8 +44,8 @@ const BrandStory = () => {
     const fetchBrandStory = async () => {
       try {
         setLoading(true);
-        const apiUri = import.meta.env.VITE_API_URL || "";
-        const response = await fetch(`${apiUri}/api/brand-story`);
+        const apiUri = API_BASE_URL || import.meta.env.VITE_API_BASE_URL || "";
+        const response = await fetch(`${apiUri}/brand-story`);
 
         if (!response.ok) {
           throw new Error("Failed to fetch brand story data.");
