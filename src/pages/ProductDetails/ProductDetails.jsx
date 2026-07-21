@@ -3,7 +3,7 @@
 
 
 import React, { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useLocation, useParams, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { toast } from "react-toastify";
 
@@ -27,6 +27,7 @@ import "./ProductDetails.css";
 const ProductDetails = () => {
   const { slug } = useParams();
   const navigate = useNavigate();
+  const location = useLocation();
   const { addToCart } = useCart();
 
   const [product, setProduct] = useState(null);
@@ -65,6 +66,11 @@ const ProductDetails = () => {
   };
 
   const handleAddToCart = async () => {
+    if (!localStorage.getItem('token')) {
+      navigate('/login', { state: { from: location.pathname } });
+      return;
+    }
+
     if (product?.sizes?.length && !selectedSize) {
       toast.warn("Please select a size first");
       return;

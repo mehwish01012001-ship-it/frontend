@@ -3,7 +3,7 @@
 
 
 import React, { useCallback, useEffect, useMemo, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { motion } from "framer-motion";
 import {
@@ -33,6 +33,7 @@ const ProductCard = ({
   isInWishlist,
 }) => {
   const navigate = useNavigate();
+  const location = useLocation();
   const {
     addToWishlist,
     removeFromWishlist,
@@ -40,6 +41,7 @@ const ProductCard = ({
   } = useWishlist();
 
   const { addToCart } = useCart();
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const cartItems = useSelector((state) => state.cart.items || []);
 
   const productId = getProductId(product);
@@ -120,6 +122,11 @@ const ProductCard = ({
     async (event) => {
       event.stopPropagation();
 
+      if (!isAuthenticated) {
+        navigate('/login', { state: { from: location.pathname } });
+        return;
+      }
+
       if (onAddToWishlist) {
         onAddToWishlist(productId);
         return;
@@ -131,12 +138,18 @@ const ProductCard = ({
         await addToWishlist(product);
       }
     },
-    [onAddToWishlist, product, productId, isWishlisted, addToWishlist, removeFromWishlist]
+    [onAddToWishlist, product, productId, isWishlisted, addToWishlist, removeFromWishlist, isAuthenticated, location.pathname, navigate]
   );
 
   const handleAddToCartClick = useCallback(
     async (event) => {
       event.stopPropagation();
+
+      if (!isAuthenticated) {
+        navigate('/login', { state: { from: location.pathname } });
+        return;
+      }
+
       if (isInCart) {
         return;
       }
@@ -148,7 +161,7 @@ const ProductCard = ({
 
       await addToCart(product, 1, '', '');
     },
-    [onAddToCart, product, addToCart, isInCart]
+    [onAddToCart, product, addToCart, isInCart, isAuthenticated, location.pathname, navigate]
   );
 
   const discount = product.comparePrice

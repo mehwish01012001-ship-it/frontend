@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import {
 FiMail,
@@ -15,10 +15,11 @@ import { useCart } from "../../hooks/useCart";
 import "./Login.css";
 
 const Login = () => {
-const navigate = useNavigate();
-const dispatch = useDispatch();
-const { fetchWishlist } = useWishlist();
-const { fetchCart } = useCart();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const dispatch = useDispatch();
+  const { fetchWishlist } = useWishlist();
+  const { fetchCart } = useCart();
 
 const [showPassword,setShowPassword] = useState(false);
 
@@ -53,7 +54,8 @@ const handleSubmit = async (e) => {
     await fetchWishlist();
     await fetchCart();
 
-    navigate("/");
+    const redirectTo = location.state?.from || "/";
+    navigate(redirectTo);
   } catch (err) {
     setError(err.response?.data?.message || "Login Failed");
   } finally {
