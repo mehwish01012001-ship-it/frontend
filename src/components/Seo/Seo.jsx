@@ -22,7 +22,7 @@ const Seo = ({
   imageAlt = "RQ Fashion - Premium Women's Stitched Clothing & Luxury Pret"
 }) => {
   // Base configuration environment variables
-  const siteUrl = import.meta.env.VITE_APP_SITE_URL || 'https://rqfashion.com';
+  const siteUrl = import.meta.env.VITE_APP_SITE_URL || 'https://frontend-one-wheat-45.vercel.app';
 
   // 1. Title Resolution (consistent branding fallback)
   const fullTitle = title.includes('RQ') ? title : `${title} | RQ Fashion`;
