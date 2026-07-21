@@ -11,10 +11,12 @@ import {
   FiShoppingBag,
   FiEye,
   FiStar,
+  FiColumns,
 } from "react-icons/fi";
 
 import { useWishlist } from "../../hooks/useWishlist";
 import { useCart } from "../../hooks/useCart";
+import { useCompareActions } from "../../hooks/useCompareActions";
 import { getMediaUrl } from "../../services/api";
 import "./ProductCard.css";
 
@@ -41,6 +43,7 @@ const ProductCard = ({
   } = useWishlist();
 
   const { addToCart } = useCart();
+  const { addToCompare, removeFromCompare, isInCompare } = useCompareActions();
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const cartItems = useSelector((state) => state.cart.items || []);
 
@@ -118,6 +121,11 @@ const ProductCard = ({
     [isInWishlist, isInWishlistFromState, productId]
   );
 
+  const isCompareSelected = useMemo(
+    () => isInCompare(productId),
+    [isInCompare, productId]
+  );
+
   const handleWishlistClick = useCallback(
     async (event) => {
       event.stopPropagation();
@@ -139,6 +147,24 @@ const ProductCard = ({
       }
     },
     [onAddToWishlist, product, productId, isWishlisted, addToWishlist, removeFromWishlist, isAuthenticated, location.pathname, navigate]
+  );
+
+  const handleCompareClick = useCallback(
+    async (event) => {
+      event.stopPropagation();
+
+      if (!isAuthenticated) {
+        navigate('/login', { state: { from: location.pathname } });
+        return;
+      }
+
+      if (isCompareSelected) {
+        await removeFromCompare(productId);
+      } else {
+        await addToCompare(product);
+      }
+    },
+    [addToCompare, isAuthenticated, isCompareSelected, navigate, location.pathname, product, productId, removeFromCompare]
   );
 
   const handleAddToCartClick = useCallback(
@@ -239,6 +265,18 @@ const ProductCard = ({
             aria-label="View product"
           >
             <FiEye />
+          </button>
+
+          <button
+            className={`compare-btn ${isCompareSelected ? 'active' : ''}`}
+            onClick={handleCompareClick}
+            aria-label={
+              isCompareSelected
+                ? 'Remove from compare'
+                : 'Add to compare'
+            }
+          >
+            <FiColumns />
           </button>
 
           <button

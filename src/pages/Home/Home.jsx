@@ -12,7 +12,7 @@ import CategoryShowcase from "../../components/CategoryShowcase/CategoryShowcase
 import Testimonials from "../../components/Testimonials/Testimonials";
 import BrandStory from "../../components/BrandStory/BrandStory";
 
-import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
+
 
 import { productService } from "../../services";
 import { setProducts } from "../../redux/slices/productSlice";
