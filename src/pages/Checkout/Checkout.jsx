@@ -72,13 +72,16 @@ const Checkout = () => {
 
     try {
       const payload = new FormData();
-      const orderItems = items.map((item) => ({
-        product: item.product?._id || item.productId,
-        quantity: item.quantity,
-        size: item.size,
-        color: item.color,
-        price: item.product?.price || item.price,
-      }));
+      const orderItems = items.map((item) => {
+        const productId = item.product?._id || item.product?.id || item.productId || item.product;
+        return {
+          product: productId,
+          quantity: item.quantity,
+          size: item.size,
+          color: item.color,
+          price: item.product?.price || item.price,
+        };
+      });
 
       payload.append('items', JSON.stringify(orderItems));
       const shippingAddress = {
