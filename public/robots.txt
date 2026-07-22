@@ -5,8 +5,8 @@ Allow: /contact
 Allow: /faq
 Allow: /shop
 Allow: /productdetails
-Allow: /terms-conditions
-Allow: /privacy-policy
+Allow: /termsconditions
+Allow: /privacypolicy
 
 Disallow: /login
 Disallow: /register
