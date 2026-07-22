@@ -19,7 +19,9 @@ const Checkout = () => {
     email: user?.email || "",
     phone: user?.phone || "",
     address: "",
+    addressLine2: "",
     city: "",
+    state: "",
     postalCode: "",
     country: "Pakistan",
     paymentMethod: "bank_account",
@@ -79,18 +81,25 @@ const Checkout = () => {
       }));
 
       payload.append('items', JSON.stringify(orderItems));
-      payload.append('shippingAddress', JSON.stringify({
-        firstName: formData.firstName,
-        lastName: formData.lastName,
-        address: formData.address,
-        city: formData.city,
-        postalCode: formData.postalCode,
-        country: formData.country,
+      const shippingAddress = {
+        fullName: `${formData.firstName} ${formData.lastName}`.trim(),
         phone: formData.phone,
-      }));
+        addressLine1: formData.address,
+        addressLine2: formData.addressLine2 || '',
+        city: formData.city,
+        state: formData.state || '',
+        zipCode: formData.postalCode,
+        country: formData.country,
+      };
+
+      payload.append('shippingAddress', JSON.stringify(shippingAddress));
+      payload.append('billingAddress', JSON.stringify(shippingAddress));
       payload.append('paymentMethod', formData.paymentMethod);
       payload.append('paymentNumber', formData.paymentNumber);
       payload.append('notes', formData.notes);
+      if (formData.coupon) {
+        payload.append('coupon', formData.coupon);
+      }
       if (formData.paymentReceipt) {
         payload.append('paymentReceipt', formData.paymentReceipt);
       }
@@ -214,6 +223,17 @@ const Checkout = () => {
                 />
               </div>
 
+              <div className="form-group">
+                <label>Address Line 2</label>
+                <input
+                  type="text"
+                  name="addressLine2"
+                  value={formData.addressLine2}
+                  onChange={handleChange}
+                  placeholder="Apartment, suite, unit, building, floor, etc."
+                />
+              </div>
+
               <div className="form-row">
 
                 <div className="form-group">
@@ -224,6 +244,16 @@ const Checkout = () => {
                     value={formData.city}
                     onChange={handleChange}
                     required
+                  />
+                </div>
+
+                <div className="form-group">
+                  <label>State / Province</label>
+                  <input
+                    type="text"
+                    name="state"
+                    value={formData.state}
+                    onChange={handleChange}
                   />
                 </div>
 
