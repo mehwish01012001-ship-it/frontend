@@ -91,6 +91,7 @@ const Checkout = () => {
 
       const shippingAddress = {
         fullName: `${formData.firstName} ${formData.lastName}`.trim(),
+        email: formData.email,
         phone: formData.phone,
         addressLine1: formData.address,
         addressLine2: formData.addressLine2 || '',
