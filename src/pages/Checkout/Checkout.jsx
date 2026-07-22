@@ -71,19 +71,24 @@ const Checkout = () => {
     setLoading(true);
 
     try {
-      const payload = new FormData();
+      if (!items || items.length === 0) {
+        alert('Your cart is empty. Add products before placing an order.');
+        setLoading(false);
+        return;
+      }
+
       const orderItems = items.map((item) => {
-        const productId = item.product?._id || item.product?.id || item.productId || item.product;
+        const rawProduct = item.product || item.productId;
+        const productId = rawProduct?._id || rawProduct?.id || rawProduct;
         return {
           product: productId,
-          quantity: item.quantity,
+          quantity: Number(item.quantity) || 0,
           size: item.size,
           color: item.color,
           price: item.product?.price || item.price,
         };
       });
 
-      payload.append('items', JSON.stringify(orderItems));
       const shippingAddress = {
         fullName: `${formData.firstName} ${formData.lastName}`.trim(),
         phone: formData.phone,
@@ -95,19 +100,36 @@ const Checkout = () => {
         country: formData.country,
       };
 
-      payload.append('shippingAddress', JSON.stringify(shippingAddress));
-      payload.append('billingAddress', JSON.stringify(shippingAddress));
-      payload.append('paymentMethod', formData.paymentMethod);
-      payload.append('paymentNumber', formData.paymentNumber);
-      payload.append('notes', formData.notes);
+      const orderData = {
+        items: orderItems,
+        shippingAddress,
+        billingAddress: shippingAddress,
+        paymentMethod: formData.paymentMethod,
+        paymentNumber: formData.paymentNumber,
+        notes: formData.notes,
+      };
+
       if (formData.coupon) {
-        payload.append('coupon', formData.coupon);
-      }
-      if (formData.paymentReceipt) {
-        payload.append('paymentReceipt', formData.paymentReceipt);
+        orderData.coupon = formData.coupon;
       }
 
-      const response = await orderService.createOrder(payload);
+      let response;
+      if (formData.paymentReceipt) {
+        const payload = new FormData();
+        payload.append('items', JSON.stringify(orderItems));
+        payload.append('shippingAddress', JSON.stringify(shippingAddress));
+        payload.append('billingAddress', JSON.stringify(shippingAddress));
+        payload.append('paymentMethod', formData.paymentMethod);
+        payload.append('paymentNumber', formData.paymentNumber);
+        payload.append('notes', formData.notes);
+        if (formData.coupon) {
+          payload.append('coupon', formData.coupon);
+        }
+        payload.append('paymentReceipt', formData.paymentReceipt);
+        response = await orderService.createOrder(payload);
+      } else {
+        response = await orderService.createOrder(orderData);
+      }
 
       navigate(`/order-success/${response.data.order._id}`);
     } catch (error) {
