@@ -278,7 +278,7 @@ const HeroSlider = () => {
                     <div className="mini-image">
 
                       <img
-                        src={slide.image}
+                        src={getAbsoluteUrl(slide.image)}
                         alt={slide.title}
                       />
 
