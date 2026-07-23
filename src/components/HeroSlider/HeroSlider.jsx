@@ -9,7 +9,7 @@ import "swiper/css/pagination";
 import "swiper/css/effect-fade";
 
 import "./HeroSlider.css";
-import api from "../../services/api";
+import api, { getAbsoluteUrl } from "../../services/api";
 
 const HeroSlider = () => {
   const [slides, setSlides] = useState([]);
@@ -122,15 +122,15 @@ const HeroSlider = () => {
                       loop
                       playsInline
                       preload="auto"
-                      poster={slide.image}
+                      poster={getAbsoluteUrl(slide.image)}
                     >
-                      <source src={slide.image} />
+                      <source src={getAbsoluteUrl(slide.image)} />
                     </video>
                   ) : (
                     <div
                       className="luxury-media luxury-image"
                       style={{
-                        backgroundImage:`url(${slide.image})`
+                        backgroundImage: `url(${getAbsoluteUrl(slide.image)})`
                       }}
                     />
                   )}
