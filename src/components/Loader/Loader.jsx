@@ -3,61 +3,64 @@ import './Loader.css';
 
 const Loader = ({ onComplete }) => {
   useEffect(() => {
-    const timer = window.setTimeout(() => onComplete?.(), 8000);
+    // Target duration strictly under 1 second (800ms)
+    const timer = window.setTimeout(() => {
+      onComplete?.();
+    }, 800);
+
     return () => window.clearTimeout(timer);
   }, [onComplete]);
 
   return (
-    <div className="luxury-loader-screen" aria-label="RQ Fashion loading animation">
-      <div className="luxury-loader-backdrop" />
-      <div className="luxury-loader-glow" />
+    <div className="rq-loader-screen" aria-label="RQ Fashion loading animation">
+      <div className="rq-loader-backdrop" />
+      <div className="rq-loader-glow" />
 
-      <div className="luxury-particles" aria-hidden="true">
-        {Array.from({ length: 24 }).map((_, index) => (
+      {/* Floating accent particles */}
+      <div className="rq-loader-particles" aria-hidden="true">
+        {Array.from({ length: 12 }).map((_, index) => (
           <span
             key={index}
-            className="luxury-particle"
+            className="rq-loader-particle"
             style={{
-              '--x': `${(index % 6) * 16 + 8}%`,
-              '--y': `${Math.floor(index / 6) * 16 + 8}%`,
-              '--delay': `${index * 0.12}s`,
-              '--duration': `${4.2 + (index % 5) * 0.5}s`,
+              '--x': `${(index % 4) * 25 + 12}%`,
+              '--y': `${Math.floor(index / 4) * 25 + 12}%`,
+              '--delay': `${index * 0.04}s`,
+              '--duration': `${0.6 + (index % 3) * 0.1}s`,
             }}
           />
         ))}
       </div>
 
-      <div className="luxury-ring" aria-hidden="true">
-        <div className="luxury-ring-stroke" />
+      {/* Center animation ring */}
+      <div className="rq-loader-ring" aria-hidden="true">
+        <div className="rq-loader-ring-stroke" />
       </div>
 
-      <div className="luxury-logo">RQ</div>
+      {/* Brand logo */}
+      <div className="rq-loader-logo">RQ</div>
 
-      <div className="luxury-brand" aria-hidden="true">
+      {/* Brand animated letters */}
+      <div className="rq-loader-brand" aria-hidden="true">
         {['R', 'Q', ' ', 'F', 'A', 'S', 'H', 'I', 'O', 'N'].map((letter, index) => (
           <span
             key={`${letter}-${index}`}
-            className={letter === ' ' ? 'brand-space' : ''}
-            style={{ animationDelay: `${index * 0.08}s` }}
+            className={letter === ' ' ? 'rq-loader-space' : ''}
+            style={{ animationDelay: `${index * 0.03}s` }}
           >
             {letter === ' ' ? '\u00A0' : letter}
           </span>
         ))}
       </div>
 
-      <div className="luxury-welcome">
+      <div className="rq-loader-welcome">
         <span>Welcome to</span>
         <strong>RQ Fashion</strong>
       </div>
 
-      <div className="luxury-taglines">
-        <p style={{ animationDelay: '2.8s' }}>Where Style Meets Elegance.</p>
-        <p style={{ animationDelay: '3.35s' }}>Discover timeless fashion crafted with premium quality.</p>
-        <p style={{ animationDelay: '3.9s' }}>Designed for confidence, made for every occasion.</p>
-      </div>
-
-      <div className="luxury-loader-bar" aria-hidden="true">
-        <div className="luxury-loader-bar-fill" />
+      {/* Rapid progress bar */}
+      <div className="rq-loader-bar" aria-hidden="true">
+        <div className="rq-loader-bar-fill" />
       </div>
     </div>
   );
