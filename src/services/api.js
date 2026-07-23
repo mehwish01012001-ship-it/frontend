@@ -29,6 +29,7 @@ export const getMediaUrl = (value) => {
   return `${SERVER_URL}/${raw.replace(/^\/?/, "")}`;
 };
 
+export const getAbsoluteUrl = (value) => getMediaUrl(value);
 
 const api = axios.create({
   baseURL: API_BASE_URL,
