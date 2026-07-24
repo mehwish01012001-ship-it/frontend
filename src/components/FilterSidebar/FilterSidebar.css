@@ -67,6 +67,34 @@
   flex-direction: column;
 }
 
+.filter-category-dropdown {
+  border: 1px solid rgba(185, 147, 51, 0.12);
+  border-radius: 10px;
+  background: #fff;
+  overflow: hidden;
+}
+
+.filter-category-toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  background: transparent;
+  border: none;
+  color: var(--text-dark);
+  font-weight: 600;
+  cursor: pointer;
+  text-align: left;
+}
+
+.filter-category-content {
+  padding: 0 10px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 .filter-subgroup {
   display: flex;
   flex-direction: column;

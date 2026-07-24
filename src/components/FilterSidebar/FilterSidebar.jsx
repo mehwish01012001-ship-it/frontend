@@ -16,6 +16,7 @@ const FilterSidebar = ({
   onShowAllProducts,
 }) => {
   const [expandedCategory, setExpandedCategory] = useState(null);
+  const [isCategoriesOpen, setIsCategoriesOpen] = useState(true);
 
   const collections = categories.length > 0
     ? categories.map((category) => ({
@@ -155,45 +156,60 @@ const FilterSidebar = ({
             </div>
           </div>
 
-          {collections.length > 0 ? (
-            collections.map((item) => {
-              const isChecked = selectedCategory === item.value || item.subcategories?.some((subItem) => selectedCategory === subItem.value);
+          <div className="filter-category-dropdown">
+            <button
+              type="button"
+              className="filter-category-toggle"
+              onClick={() => setIsCategoriesOpen((prev) => !prev)}
+            >
+              <span>Categories</span>
+              <span>{isCategoriesOpen ? "⌃" : "⌄"}</span>
+            </button>
 
-              return (
-                <div key={item.value} className="filter-option-container">
-                  <label className={`filter-option ${isChecked ? "active" : ""}`}>
-                    <input
-                      type="checkbox"
-                      checked={isChecked}
-                      onChange={() => handleCollectionToggle(item.value, item)}
-                    />
-                    <span>{item.label}</span>
-                  </label>
+            {isCategoriesOpen && (
+              <div className="filter-category-content">
+                {collections.length > 0 ? (
+                  collections.map((item) => {
+                    const isChecked = selectedCategory === item.value || item.subcategories?.some((subItem) => selectedCategory === subItem.value);
 
-                  {item.subcategories?.length > 0 && expandedCategory === item.value && (
-                    <div className="filter-subgroup">
-                      {item.subcategories.map((subItem) => {
-                        const isSubChecked = selectedCategory === subItem.value;
+                    return (
+                      <div key={item.value} className="filter-option-container">
+                        <label className={`filter-option ${isChecked ? "active" : ""}`}>
+                          <input
+                            type="checkbox"
+                            checked={isChecked}
+                            onChange={() => handleCollectionToggle(item.value, item)}
+                          />
+                          <span>{item.label}</span>
+                        </label>
 
-                        return (
-                          <label key={subItem.value} className={`filter-option filter-option--sub ${isSubChecked ? "active" : ""}`}>
-                            <input
-                              type="checkbox"
-                              checked={isSubChecked}
-                              onChange={() => handleSubcategoryToggle(subItem.value, item.value)}
-                            />
-                            <span>{subItem.label}</span>
-                          </label>
-                        );
-                      })}
-                    </div>
-                  )}
-                </div>
-              );
-            })
-          ) : (
-            <p className="filter-empty-state">No categories available yet.</p>
-          )}
+                        {item.subcategories?.length > 0 && expandedCategory === item.value && (
+                          <div className="filter-subgroup">
+                            {item.subcategories.map((subItem) => {
+                              const isSubChecked = selectedCategory === subItem.value;
+
+                              return (
+                                <label key={subItem.value} className={`filter-option filter-option--sub ${isSubChecked ? "active" : ""}`}>
+                                  <input
+                                    type="checkbox"
+                                    checked={isSubChecked}
+                                    onChange={() => handleSubcategoryToggle(subItem.value, item.value)}
+                                  />
+                                  <span>{subItem.label}</span>
+                                </label>
+                              );
+                            })}
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })
+                ) : (
+                  <p className="filter-empty-state">No categories available yet.</p>
+                )}
+              </div>
+            )}
+          </div>
         </div>
       </aside>
     </>
