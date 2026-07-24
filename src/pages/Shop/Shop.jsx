@@ -31,6 +31,8 @@ const Shop = () => {
     sort: "newest",
     season: "",
     size: "",
+    minPrice: "",
+    maxPrice: "",
   });
 
   useEffect(() => {
@@ -60,6 +62,8 @@ const Shop = () => {
         season: filters.season,
         sort: filters.sort,
         size: filters.size,
+        minPrice: filters.minPrice,
+        maxPrice: filters.maxPrice,
       });
 
       setProducts(res?.data?.products || []);
@@ -179,6 +183,8 @@ const Shop = () => {
           selectedCategory={filters.category}
           selectedSeason={filters.season}
           selectedSize={filters.size}
+          minPrice={filters.minPrice}
+          maxPrice={filters.maxPrice}
           onCategoryChange={(val) =>
             setFilters((prev) => ({
               ...prev,
@@ -198,6 +204,13 @@ const Shop = () => {
               size,
             }))
           }
+          onPriceRangeChange={({ min, max }) =>
+            setFilters((prev) => ({
+              ...prev,
+              minPrice: min,
+              maxPrice: max,
+            }))
+          }
           onShowAllProducts={() =>
             setFilters((prev) => ({
               ...prev,
@@ -206,6 +219,8 @@ const Shop = () => {
               sort: "newest",
               season: "",
               size: "",
+              minPrice: "",
+              maxPrice: "",
             }))
           }
         />

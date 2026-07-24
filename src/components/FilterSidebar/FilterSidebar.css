@@ -115,6 +115,51 @@
   color: #8a6312;
 }
 
+.filter-price-group {
+  border-top: 1px solid rgba(0, 0, 0, 0.04);
+  padding-top: 12px;
+  margin-top: 4px;
+}
+
+.filter-price-group h4 {
+  margin: 0 0 10px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--text-dark);
+}
+
+.filter-price-inputs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.filter-price-inputs label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.filter-price-inputs input {
+  width: 100%;
+  border: 1px solid rgba(185, 147, 51, 0.16);
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-size: 13px;
+  color: var(--text-dark);
+  background: #fff;
+}
+
+.filter-price-inputs input:focus {
+  outline: none;
+  border-color: var(--accent-gold);
+  box-shadow: 0 0 0 2px rgba(185, 147, 51, 0.08);
+}
+
 .filter-option input {
   accent-color: var(--accent-gold);
   cursor: pointer;

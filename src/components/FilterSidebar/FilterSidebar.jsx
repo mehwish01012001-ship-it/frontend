@@ -8,8 +8,11 @@ const FilterSidebar = ({
   categories = [],
   selectedCategory,
   selectedSeason,
+  minPrice,
+  maxPrice,
   onCategoryChange,
   onSeasonChange,
+  onPriceRangeChange,
   onShowAllProducts,
 }) => {
   const [expandedCategory, setExpandedCategory] = useState(null);
@@ -49,6 +52,14 @@ const FilterSidebar = ({
     setExpandedCategory(parentValue);
   };
 
+  const handlePriceInputChange = (field, value) => {
+    const cleanValue = value.replace(/[^\d]/g, "");
+    onPriceRangeChange?.({
+      min: field === "min" ? cleanValue : minPrice || "",
+      max: field === "max" ? cleanValue : maxPrice || "",
+    });
+  };
+
   const activeCollectionObj = collections.find((c) => c.value === selectedCategory);
   const currentSEOKeywords = activeCollectionObj
     ? activeCollectionObj.keywords
@@ -85,7 +96,7 @@ const FilterSidebar = ({
       <aside className="filter-sidebar">
         <div className="filter-sidebar__header">
           <h3>Collections</h3>
-          {(selectedCategory || selectedSeason) && (
+          {(selectedCategory || selectedSeason || minPrice || maxPrice) && (
             <button 
               type="button" 
               className="filter-sidebar__clear" 
@@ -103,7 +114,7 @@ const FilterSidebar = ({
 
         <div className="filter-group">
           <div className="filter-option-container">
-            <label className={`filter-option ${!selectedCategory && !selectedSeason ? "active" : ""}`}>
+            <label className={`filter-option ${!selectedCategory && !selectedSeason && !minPrice && !maxPrice ? "active" : ""}`}>
               <input
                 type="checkbox"
                 checked={!selectedCategory && !selectedSeason}
@@ -116,6 +127,32 @@ const FilterSidebar = ({
               />
               <span>All Products</span>
             </label>
+          </div>
+
+          <div className="filter-price-group">
+            <h4>Price Range</h4>
+            <div className="filter-price-inputs">
+              <label>
+                <span>Min</span>
+                <input
+                  type="number"
+                  min="0"
+                  placeholder="0"
+                  value={minPrice ?? ""}
+                  onChange={(e) => handlePriceInputChange("min", e.target.value)}
+                />
+              </label>
+              <label>
+                <span>Max</span>
+                <input
+                  type="number"
+                  min="0"
+                  placeholder="100000"
+                  value={maxPrice ?? ""}
+                  onChange={(e) => handlePriceInputChange("max", e.target.value)}
+                />
+              </label>
+            </div>
           </div>
 
           {collections.length > 0 ? (
