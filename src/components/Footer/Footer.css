@@ -215,7 +215,9 @@
   text-transform: uppercase;
   margin: 0 0 28px 0;
   letter-spacing: 0.2em;
-  color: var(--lux-text-primary);
+  /* color: var(--lux-text-primary); */
+
+   color: #fff !important;
   position: relative;
 }
 

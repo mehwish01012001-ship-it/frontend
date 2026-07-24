@@ -216,6 +216,7 @@ body {
 
   max-width: 1350px;
   margin: auto;
+  margin-bottom:25px;
 
   display: grid;
   grid-template-columns: 420px 1fr;
@@ -469,6 +470,8 @@ body {
 
 .map-section {
   max-width: 1350px;
+  padding-top:100px;
+  margin-top:100px;
   margin: auto;
 
   background: white;
@@ -598,7 +601,10 @@ body {
   .contact-info-box,
   .map-section {
     padding: 25px;
+    
+
   }
+
 
   .contact-hero h1 {
     font-size: 2.4rem;
