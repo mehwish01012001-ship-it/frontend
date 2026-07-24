@@ -190,18 +190,18 @@
   gap: 8px;
 
   opacity: 0;
-
-  transition: .4s;
-
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
   z-index: 20;
 }
 
-.lux-card:hover .hover-actions {
+.lux-card:hover .hover-actions,
+.lux-card:focus-within .hover-actions {
   opacity: 1;
-
-  transform:
-    translateX(-50%)
-    translateY(0);
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
 }
 
 .hover-actions button {
@@ -218,13 +218,17 @@
   justify-content: center;
 
   cursor: pointer;
-
-  transition: .3s;
+  background: rgba(255, 255, 255, 0.96);
+  color: #111;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.16);
+  transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease;
 }
 
-.hover-actions button:hover {
+.hover-actions button:hover,
+.hover-actions button:focus-visible {
   background: #d4af37;
   color: white;
+  transform: translateY(-2px);
 }
 
 /* INFO SECTION */
