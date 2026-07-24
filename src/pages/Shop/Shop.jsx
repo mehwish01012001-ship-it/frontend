@@ -180,32 +180,33 @@ const Shop = () => {
           selectedSeason={filters.season}
           selectedSize={filters.size}
           onCategoryChange={(val) =>
-            setFilters({
-              ...filters,
+            setFilters((prev) => ({
+              ...prev,
               category: val,
               season: "",
-            })
+            }))
           }
           onSeasonChange={(season) =>
-            setFilters({
-              ...filters,
+            setFilters((prev) => ({
+              ...prev,
               season,
-            })
+            }))
           }
           onSizeChange={(size) =>
-            setFilters({
-              ...filters,
+            setFilters((prev) => ({
+              ...prev,
               size,
-            })
+            }))
           }
           onShowAllProducts={() =>
-            setFilters({
+            setFilters((prev) => ({
+              ...prev,
               search: "",
               category: "",
               sort: "newest",
               season: "",
               size: "",
-            })
+            }))
           }
         />
 

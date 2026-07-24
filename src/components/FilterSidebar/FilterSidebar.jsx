@@ -102,6 +102,22 @@ const FilterSidebar = ({
         </div>
 
         <div className="filter-group">
+          <div className="filter-option-container">
+            <label className={`filter-option ${!selectedCategory && !selectedSeason ? "active" : ""}`}>
+              <input
+                type="checkbox"
+                checked={!selectedCategory && !selectedSeason}
+                onChange={() => {
+                  onShowAllProducts?.();
+                  onCategoryChange?.("");
+                  onSeasonChange?.("");
+                  setExpandedCategory(null);
+                }}
+              />
+              <span>All Products</span>
+            </label>
+          </div>
+
           {collections.length > 0 ? (
             collections.map((item) => {
               const isChecked = selectedCategory === item.value || item.subcategories?.some((subItem) => selectedCategory === subItem.value);
