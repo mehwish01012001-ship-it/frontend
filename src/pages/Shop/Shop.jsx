@@ -122,9 +122,9 @@ const Shop = () => {
         <h1>
           RQ<span> Fashion</span>
         </h1>
-        <p className="hero-tagline">
+        {/* <p className="hero-tagline">
           Elegance stitched to perfection. Explore structural cuts, masterfully tailored ready-to-wear pret, and opulent seasonal collections.
-        </p>
+        </p> */}
       </div>
 
       <Breadcrumbs />

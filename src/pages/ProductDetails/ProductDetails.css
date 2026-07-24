@@ -238,6 +238,26 @@
   font-size: 18px;
 }
 
+.pd-sku-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 18px;
+  font-size: 14px;
+}
+
+.pd-sku-label {
+  color: var(--text-muted);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+.pd-sku-value {
+  color: var(--text-main);
+  font-weight: 600;
+}
+
 .pd-short-desc {
   color: var(--text-muted);
   line-height: 1.75;

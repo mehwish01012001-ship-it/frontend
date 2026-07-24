@@ -265,6 +265,11 @@ const ProductDetails = () => {
               )}
             </div>
 
+            <div className="pd-sku-row">
+              <span className="pd-sku-label">SKU:</span>
+              <span className="pd-sku-value">{product.sku || `SKU-${product._id || slug}`}</span>
+            </div>
+
             <p className="pd-short-desc">{product.description}</p>
 
             {/* Size Attributes */}
