@@ -152,6 +152,11 @@
   transform: translateY(-3px);
 }
 
+.wishlist-btn.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
 .cart-product {
   border: 2px solid rgba(212, 175, 55, 0.75);
 }
@@ -178,17 +183,11 @@
 
 .hover-actions {
   position: absolute;
-
   bottom: 14px;
   left: 50%;
-
-  transform:
-    translateX(-50%)
-    translateY(15px);
-
+  transform: translateX(-50%) translateY(15px);
   display: flex;
   gap: 8px;
-
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
@@ -196,8 +195,7 @@
   z-index: 20;
 }
 
-.lux-card:hover .hover-actions,
-.lux-card:focus-within .hover-actions {
+.hover-actions.visible {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
@@ -382,9 +380,14 @@
     font-size:16px;
   }
 
-  .hover-actions{
-    opacity:1;
-    transform:translateX(-50%);
+  .hover-actions {
+    opacity: 0;
+    transform: translateX(-50%) translateY(15px);
+  }
+
+  .hover-actions.visible {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
   }
 
 }

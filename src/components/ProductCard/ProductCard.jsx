@@ -9,7 +9,6 @@ import { motion } from "framer-motion";
 import {
   FiHeart,
   FiShoppingBag,
-  FiEye,
   FiStar,
   FiColumns,
 } from "react-icons/fi";
@@ -49,6 +48,7 @@ const ProductCard = ({
 
   const productId = getProductId(product);
   const [activeMediaIndex, setActiveMediaIndex] = useState(0);
+  const [showActions, setShowActions] = useState(false);
 
   const mediaItems = useMemo(() => {
     const sources = [];
@@ -207,8 +207,33 @@ const ProductCard = ({
       className="lux-card"
       whileHover={{ y: -10 }}
       transition={{ duration: 0.4 }}
+      onClick={() => navigate(`/product/${product.slug || productId}`)}
+      role="button"
+      tabIndex={0}
+      onKeyDown={(event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          navigate(`/product/${product.slug || productId}`);
+        }
+      }}
     >
-      <div className={`image-section ${isInCart ? 'cart-product' : ''} ${mediaItems.length > 1 ? 'has-gallery' : ''}`}>
+      <div
+        className={`image-section ${isInCart ? 'cart-product' : ''} ${mediaItems.length > 1 ? 'has-gallery' : ''}`}
+        onMouseEnter={() => setShowActions(true)}
+        onMouseLeave={() => setShowActions(false)}
+        onTouchStart={(event) => {
+          event.stopPropagation();
+          setShowActions(true);
+        }}
+        onTouchEnd={(event) => {
+          event.stopPropagation();
+          setShowActions(false);
+        }}
+        onTouchCancel={(event) => {
+          event.stopPropagation();
+          setShowActions(false);
+        }}
+      >
         {currentMediaType === "video" ? (
           <video
             src={imageUrl}
@@ -241,8 +266,22 @@ const ProductCard = ({
 
         <button
           type="button"
-          className={`wishlist-btn ${isWishlisted ? "active" : ""}`}
+          className={`wishlist-btn ${isWishlisted ? "active" : ""} ${showActions ? "visible" : ""}`}
           onClick={handleWishlistClick}
+          onMouseEnter={() => setShowActions(true)}
+          onMouseLeave={() => setShowActions(false)}
+          onTouchStart={(event) => {
+            event.stopPropagation();
+            setShowActions(true);
+          }}
+          onTouchEnd={(event) => {
+            event.stopPropagation();
+            setShowActions(false);
+          }}
+          onTouchCancel={(event) => {
+            event.stopPropagation();
+            setShowActions(false);
+          }}
           aria-label={
             isWishlisted
               ? "Remove from wishlist"
@@ -252,21 +291,7 @@ const ProductCard = ({
           <FiHeart />
         </button>
 
-        <div className="hover-actions">
-          <button
-            onClick={() =>
-              navigate(
-                `/product/${
-                  product.slug ||
-                  productId
-                }`
-              )
-            }
-            aria-label="View product"
-          >
-            <FiEye />
-          </button>
-
+        <div className={`hover-actions ${showActions ? "visible" : ""}`}>
           <button
             className={`compare-btn ${isCompareSelected ? 'active' : ''}`}
             onClick={handleCompareClick}
