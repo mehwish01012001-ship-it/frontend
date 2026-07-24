@@ -8,19 +8,23 @@ const FilterSidebar = ({
   categories = [],
   selectedCategory,
   selectedSeason,
+  selectedSize,
   minPrice,
   maxPrice,
   onCategoryChange,
   onSeasonChange,
+  onSizeChange,
   onPriceRangeChange,
   onShowAllProducts,
 }) => {
   const [expandedCategory, setExpandedCategory] = useState(null);
   const [isCategoriesOpen, setIsCategoriesOpen] = useState(true);
+  const [isSizesOpen, setIsSizesOpen] = useState(true);
 
+  // Use category _id as the filter value so backend can match ObjectId
   const collections = categories.length > 0
     ? categories.map((category) => ({
-        value: category.slug || category.name,
+        value: category._id || category.id || category.slug || category.name,
         label: category.name,
         keywords: `${category.name} luxury clothing, premium ${category.name} wear`,
         subcategories: Array.isArray(category.subcategoryNames)
@@ -28,7 +32,8 @@ const FilterSidebar = ({
               .filter(Boolean)
               .map((name) => ({
                 label: name,
-                value: `${category.slug || category.name}-${name}`.toLowerCase().replace(/[^a-z0-9]+/g, "-"),
+                // subcategory stored as plain string on product.subcategory, use slugified label for URL-safe value
+                value: `${(category._id || category.slug || category.name)}-${String(name).toLowerCase().replace(/[^a-z0-9]+/g, "-")}`,
               }))
           : [],
       }))
@@ -128,6 +133,34 @@ const FilterSidebar = ({
               />
               <span>All Products</span>
             </label>
+          </div>
+
+          <div className="filter-size-dropdown">
+            <button
+              type="button"
+              className="filter-size-toggle"
+              onClick={() => setIsSizesOpen((prev) => !prev)}
+            >
+              <span>Sizes</span>
+              <span>{isSizesOpen ? "⌃" : "⌄"}</span>
+            </button>
+
+            {isSizesOpen && (
+              <div className="filter-size-content">
+                <div className="size-list">
+                  {['XS','S','M','L','XL'].map((s) => (
+                    <label key={s} className={`filter-option size-option ${String(selectedSize) === String(s) ? "active" : ""}`}>
+                      <input
+                        type="checkbox"
+                        checked={String(selectedSize) === String(s)}
+                        onChange={() => onSizeChange?.(String(selectedSize) === String(s) ? "" : s)}
+                      />
+                      <span>{s}</span>
+                    </label>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
 
           <div className="filter-price-group">

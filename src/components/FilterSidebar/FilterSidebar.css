@@ -195,3 +195,61 @@
   height: 16px;
 }
 
+.filter-size-group {
+  border-top: 1px solid rgba(0, 0, 0, 0.04);
+  padding-top: 12px;
+  margin-top: 4px;
+}
+
+.filter-size-group h4 {
+  margin: 0 0 10px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--text-dark);
+}
+
+.size-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.size-option {
+  padding: 8px 10px;
+}
+
+.size-option input {
+  margin-right: 8px;
+}
+
+.filter-size-dropdown {
+  border: 1px solid rgba(185, 147, 51, 0.12);
+  border-radius: 10px;
+  background: #fff;
+  overflow: hidden;
+}
+
+.filter-size-toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  background: transparent;
+  border: none;
+  color: var(--text-dark);
+  font-weight: 600;
+  cursor: pointer;
+  text-align: left;
+}
+
+.filter-size-content {
+  padding: 0 10px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
