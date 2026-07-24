@@ -36,21 +36,20 @@ const Breadcrumbs = () => {
 
   if (pathnames.length === 0) return null;
 
+  const currentPath = `/${pathnames.join('/')}`;
+  const currentLabel = routeLabels[currentPath] || formatLabel(pathnames[pathnames.length - 1]);
+
   const isProductDetail = pathnames[0] === 'product' || pathnames[0] === 'productdetails';
 
   const crumbs = isProductDetail
     ? [
         { path: '/', label: 'Home', isLast: false },
-        { path: '/shop', label: 'Shop', isLast: false },
-        { path: location.pathname, label: 'Product', isLast: true },
+        { path: currentPath, label: 'Product', isLast: true },
       ]
-    : pathnames.map((segment, index) => {
-        const path = `/${pathnames.slice(0, index + 1).join('/')}`;
-        const label = routeLabels[path] || formatLabel(segment);
-        const isLast = index === pathnames.length - 1;
-
-        return { path, label, isLast };
-      });
+    : [
+        { path: '/', label: 'Home', isLast: false },
+        { path: currentPath, label: currentLabel, isLast: true },
+      ];
 
   return (
     <nav className="custom-breadcrumb" aria-label="Breadcrumb">

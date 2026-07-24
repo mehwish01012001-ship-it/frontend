@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Seo from '../../components/SEO';
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
+import { contactService } from '../../services';
+import { toast } from 'react-toastify';
 import {
   FiMail,
   FiPhone,
@@ -32,34 +34,39 @@ const Contact = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    alert("✨ Message sent successfully!");
-
-    setFormData({
-      name: "",
-      email: "",
-      subject: "",
-      message: "",
-    });
+    try {
+      await contactService.submitMessage(formData);
+      toast.success("Your message has been sent successfully.");
+      setFormData({
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
+      });
+    } catch (error) {
+      const message = error?.response?.data?.message || "Unable to send your message.";
+      toast.error(message);
+    }
   };
 
   const contactCards = [
     {
       icon: <FiMail />,
       title: "Email Us",
-      text: "support@rqfashion.com",
+      text: "rqfashionofficialstore@gmail.com",
     },
     {
       icon: <FiPhone />,
       title: "Call Us",
-      text: "+1 (555) 123-4567",
+      text: "+92 323 4376492",
     },
     {
       icon: <FiMapPin />,
       title: "Visit Us",
-      text: "123 Fashion Avenue, NY",
+      text: "Shahdara, Lahore",
     },
     {
       icon: <FiClock />,
@@ -169,17 +176,17 @@ const Contact = () => {
 
               <div className="contact-list-item">
                 <FiMail />
-                <span>support@rqfashion.com</span>
+                <span>rqfashionofficialstore@gmail.com</span>
               </div>
 
               <div className="contact-list-item">
                 <FiPhone />
-                <span>+1 (555) 123-4567</span>
+                <span>+92 323 4376492</span>
               </div>
 
               <div className="contact-list-item">
                 <FiMapPin />
-                <span>123 Fashion Avenue, New York</span>
+                <span>Shahdara, Lahore</span>
               </div>
 
             </div>

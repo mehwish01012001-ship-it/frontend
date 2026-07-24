@@ -17,11 +17,9 @@ const About = () => {
       />
 
       <div className="about-page">
-      <div className="container">
-        <Breadcrumbs />
-      </div>
       <div className="about-hero">
         <div className="container">
+          <Breadcrumbs />
           <h1>About RQ Fashion</h1>
           <p>Luxury Fashion, Timeless Elegance</p>
         </div>

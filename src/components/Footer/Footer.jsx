@@ -1,82 +1,3 @@
-// import React from 'react';
-// import { Link } from 'react-router-dom';
-// import { FiFacebook, FiInstagram, FiTwitter, FiLinkedin } from 'react-icons/fi';
-// import './Footer.css';
-
-// const Footer = () => {
-//   return (
-//     <footer className="footer">
-//       <div className="footer-container">
-//         <div className="footer-grid">
-//           {/* Brand Section */}
-//           <div className="footer-section">
-//             <h3>RQ FASHION</h3>
-//             <p>Premium luxury fashion for the modern individual. Discover our exclusive collections of high-end clothing, accessories, and more.</p>
-//             <div className="social-icons">
-//               <a href="#" title="Facebook"><FiFacebook /></a>
-//               <a href="#" title="Instagram"><FiInstagram /></a>
-//               <a href="#" title="Twitter"><FiTwitter /></a>
-//               <a href="#" title="LinkedIn"><FiLinkedin /></a>
-//             </div>
-//           </div>
-
-//           {/* Quick Links */}
-//           <div className="footer-section">
-//             <h4>Quick Links</h4>
-//             <ul>
-//               <li><Link to="/shop">Shop All</Link></li>
-//               <li><Link to="/categories">Categories</Link></li>
-//               <li><Link to="/about">About Us</Link></li>
-//               <li><Link to="/contact">Contact</Link></li>
-//             </ul>
-//           </div>
-
-//           {/* Customer Service */}
-//           <div className="footer-section">
-//             <h4>Customer Service</h4>
-//             <ul>
-//               <li><Link to="/faq">FAQ</Link></li>
-//               <li><Link to="/privacy-policy">Privacy Policy</Link></li>
-//               <li><Link to="/terms-conditions">Terms & Conditions</Link></li>
-//               <li><a href="mailto:support@rqfashion.com">Email Support</a></li>
-//             </ul>
-//           </div>
-
-//           {/* Newsletter */}
-//           <div className="footer-section">
-//             <h4>Newsletter</h4>
-//             <p>Subscribe to get exclusive offers and updates.</p>
-//             <div className="newsletter-input">
-//               <input
-//                 type="email"
-//                 placeholder="Enter your email"
-//               />
-//               <button>Subscribe</button>
-//             </div>
-//           </div>
-//         </div>
-
-//         {/* Bottom */}
-//         <div className="footer-bottom">
-//           <p>&copy; 2024 RQ Fashion. All rights reserved.</p>
-//           <p>Designed & Developed with ♡ for Fashion Enthusiasts</p>
-//         </div>
-//       </div>
-//     </footer>
-//   );
-// };
-
-// export default Footer;
-
-
-
-
-
-
-
-
-
-
 
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
@@ -192,7 +113,7 @@ const Footer = () => {
                 <li><Link to="/faq" className="animated-link">FAQ</Link></li>
                 <li><Link to="/privacy-policy" className="animated-link">Privacy Policy</Link></li>
                 <li><Link to="/terms-conditions" className="animated-link">Terms & Conditions</Link></li>
-                <li><a href="mailto:support@rqfashion.com" className="animated-link">Email Support</a></li>
+                <li><a href="mailto:rqfashionofficialstore@gmail.com" className="animated-link">Email Support</a></li>
               </ul>
             </div>
           </div>

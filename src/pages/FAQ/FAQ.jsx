@@ -39,7 +39,7 @@ const FAQ = () => {
     {
       question: 'How can I contact customer support?',
       answer:
-        'You can reach us via email at support@rqfashion.com or through the Contact page. We typically respond within 24 hours.',
+        'You can reach us via email at rqfashionofficialstore@gmail.com or through the Contact page. We typically respond within 24 hours.',
     },
     {
       question: 'Do you have a loyalty program?',
@@ -98,7 +98,7 @@ const FAQ = () => {
       <div className="faq-contact">
         <div className="container">
           <h2>Still have questions?</h2>
-          <p>Contact our support team at support@rqfashion.com or call +1 (555) 123-4567</p>
+          <p>Contact our support team at rqfashionofficialstore@gmail.com or call +92 323 4376492</p>
         </div>
       </div>
     </div>

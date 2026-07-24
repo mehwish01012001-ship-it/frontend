@@ -27,3 +27,7 @@
   color: #222;
   font-weight: 600;
 }
+
+.about-page .breadcrumb-current {
+  color: #fff;
+}

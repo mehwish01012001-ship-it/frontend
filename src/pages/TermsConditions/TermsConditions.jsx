@@ -96,7 +96,7 @@ const TermsConditions = () => {
             <h2>9. Contact Information</h2>
             <p>
               If you have any questions about these Terms and Conditions, please contact us at:
-              support@rqfashion.com
+              rqfashionofficialstore@gmail.com
             </p>
           </section>
         </div>

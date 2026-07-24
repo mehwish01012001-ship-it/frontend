@@ -61,3 +61,7 @@ export const couponService = {
   createCoupon: (data) => api.post('/coupons', data),
   deleteCoupon: (id) => api.delete(`/coupons/${id}`),
 };
+
+export const contactService = {
+  submitMessage: (data) => api.post('/contact', data),
+};

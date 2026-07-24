@@ -17,6 +17,7 @@ import { useCart } from './hooks/useCart';
 import './App.css';
 import 'react-toastify/dist/ReactToastify.css';
 import Loader from './components/Loader/Loader';
+import WhatsAppFloat from './components/WhatsAppFloat/WhatsAppFloat';
 
 const AppContent = () => {
   const dispatch = useDispatch();
@@ -64,6 +65,7 @@ const AppContent = () => {
         <MainLayout>
           <AppRoutes />
         </MainLayout>
+        <WhatsAppFloat />
         <ToastContainer />
       </Router>
     </>
