@@ -1,47 +1,60 @@
 
 
-import React from "react";
-import { Helmet } from "react-helmet-async"; // Used for dynamic SEO injections
+import React, { useState } from "react";
+import { Helmet } from "react-helmet-async";
 import "./FilterSidebar.css";
 
-/**
- * FilterSidebar Component
- * 
- * A premium, dynamic navigation panel designed for an upscale women's stitched fashion store.
- * Handles collection-based filtering for the storefront.
- * 
- * @param {string} selectedSeason - Current active season ("summer", "winter", etc.)
- * @param {function} onSeasonChange - Parent handler when a season selection updates
- * @param {function} onShowAllProducts - Resets all active filters
- */
 const FilterSidebar = ({
+  categories = [],
+  selectedCategory,
   selectedSeason,
+  onCategoryChange,
   onSeasonChange,
   onShowAllProducts,
 }) => {
-  // Collections represent the primary parental taxonomies
-  const collections = [
-    { value: "summer", label: "Summer Collection", keywords: "luxury summer lawn, stitched summer wear, women lawn suits" },
-    { value: "winter", label: "Winter Collection", keywords: "premium velvet suits, stitched winter khaddar, warm women wear" },
-  ];
+  const [expandedCategory, setExpandedCategory] = useState(null);
 
+  const collections = categories.length > 0
+    ? categories.map((category) => ({
+        value: category.slug || category.name,
+        label: category.name,
+        keywords: `${category.name} luxury clothing, premium ${category.name} wear`,
+        subcategories: Array.isArray(category.subcategoryNames)
+          ? category.subcategoryNames
+              .filter(Boolean)
+              .map((name) => ({
+                label: name,
+                value: `${category.slug || category.name}-${name}`.toLowerCase().replace(/[^a-z0-9]+/g, "-"),
+              }))
+          : [],
+      }))
+    : [];
 
-  // Handles checking/unchecking of the primary seasonal collections
-  const handleCollectionToggle = (value) => {
-    if (selectedSeason === value) {
-      onSeasonChange?.("");
+  const handleCollectionToggle = (value, item) => {
+    if (selectedCategory === value) {
+      onCategoryChange?.("");
+      setExpandedCategory(null);
     } else {
-      onSeasonChange?.(value);
+      onCategoryChange?.(value);
+      if (item?.subcategories?.length) {
+        setExpandedCategory(value);
+      } else {
+        setExpandedCategory(null);
+      }
     }
   };
 
-  // Dynamically configure SEO keywords and titles depending on active selection
-  const activeCollectionObj = collections.find(c => c.value === selectedSeason);
-  const currentSEOKeywords = activeCollectionObj 
-    ? activeCollectionObj.keywords 
+  const handleSubcategoryToggle = (value, parentValue) => {
+    onCategoryChange?.(value);
+    setExpandedCategory(parentValue);
+  };
+
+  const activeCollectionObj = collections.find((c) => c.value === selectedCategory);
+  const currentSEOKeywords = activeCollectionObj
+    ? activeCollectionObj.keywords
     : "womens stitched clothing, premium designer wear, ready to wear pakistani suits, stitched luxury pret";
-  const dynamicTitle = selectedSeason 
-    ? `Designer ${activeCollectionObj?.label} | Premium Stitched Clothing` 
+  const dynamicTitle = selectedCategory
+    ? `Designer ${activeCollectionObj?.label} | Premium Stitched Clothing`
     : "Shop Stitched Women's Luxury Pret & Collections";
 
 
@@ -70,16 +83,17 @@ const FilterSidebar = ({
       </Helmet>
 
       <aside className="filter-sidebar">
-        {/* Header Block */}
         <div className="filter-sidebar__header">
           <h3>Collections</h3>
-          {(selectedSeason) && (
+          {(selectedCategory || selectedSeason) && (
             <button 
               type="button" 
               className="filter-sidebar__clear" 
               onClick={() => {
                 onShowAllProducts?.();
+                onCategoryChange?.("");
                 onSeasonChange?.("");
+                setExpandedCategory(null);
               }}
             >
               Clear Filters
@@ -87,24 +101,46 @@ const FilterSidebar = ({
           )}
         </div>
 
-        {/* Parent Collections Selection Area */}
         <div className="filter-group">
-          {collections.map((item) => {
-            const isChecked = selectedSeason === item.value;
+          {collections.length > 0 ? (
+            collections.map((item) => {
+              const isChecked = selectedCategory === item.value || item.subcategories?.some((subItem) => selectedCategory === subItem.value);
 
-            return (
-              <div key={item.value} className="filter-option-container">
-                <label className={`filter-option ${isChecked ? "active" : ""}`}>
-                  <input
-                    type="checkbox"
-                    checked={isChecked}
-                    onChange={() => handleCollectionToggle(item.value)}
-                  />
-                  <span>{item.label}</span>
-                </label>
-              </div>
-            );
-          })}
+              return (
+                <div key={item.value} className="filter-option-container">
+                  <label className={`filter-option ${isChecked ? "active" : ""}`}>
+                    <input
+                      type="checkbox"
+                      checked={isChecked}
+                      onChange={() => handleCollectionToggle(item.value, item)}
+                    />
+                    <span>{item.label}</span>
+                  </label>
+
+                  {item.subcategories?.length > 0 && expandedCategory === item.value && (
+                    <div className="filter-subgroup">
+                      {item.subcategories.map((subItem) => {
+                        const isSubChecked = selectedCategory === subItem.value;
+
+                        return (
+                          <label key={subItem.value} className={`filter-option filter-option--sub ${isSubChecked ? "active" : ""}`}>
+                            <input
+                              type="checkbox"
+                              checked={isSubChecked}
+                              onChange={() => handleSubcategoryToggle(subItem.value, item.value)}
+                            />
+                            <span>{subItem.label}</span>
+                          </label>
+                        );
+                      })}
+                    </div>
+                  )}
+                </div>
+              );
+            })
+          ) : (
+            <p className="filter-empty-state">No categories available yet.</p>
+          )}
         </div>
       </aside>
     </>

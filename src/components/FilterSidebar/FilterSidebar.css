@@ -67,6 +67,14 @@
   flex-direction: column;
 }
 
+.filter-subgroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-left: 16px;
+  margin-top: 8px;
+}
+
 .filter-option {
   display: flex;
   align-items: center;
@@ -91,6 +99,20 @@
   background: var(--accent-gold-light);
   border-color: var(--accent-gold);
   color: #7a5a10;
+}
+
+.filter-option--sub {
+  padding: 10px 12px;
+  font-size: 13px;
+  background: #fffdf9;
+  border-color: rgba(185, 147, 51, 0.12);
+  color: #5a4a23;
+}
+
+.filter-option--sub.active {
+  background: #f9efe0;
+  border-color: #d8b05e;
+  color: #8a6312;
 }
 
 .filter-option input {
