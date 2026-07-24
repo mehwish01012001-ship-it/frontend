@@ -15,6 +15,7 @@ import {
 
 import { useCart } from "../../hooks/useCart";
 import { getMediaUrl } from "../../services/api";
+import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs";
 
 import "./Cart.css";
 
@@ -97,11 +98,11 @@ const Cart = () => {
 
   return (
     <div className="cart-page">
-
       <div className="blob blob1"></div>
       <div className="blob blob2"></div>
 
       <div className="cart-container">
+        <Breadcrumbs />
 
         <div className="cart-header">
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import Seo from '../../components/SEO';
+import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
 import './About.css';
 
 const About = () => {
@@ -16,6 +17,9 @@ const About = () => {
       />
 
       <div className="about-page">
+      <div className="container">
+        <Breadcrumbs />
+      </div>
       <div className="about-hero">
         <div className="container">
           <h1>About RQ Fashion</h1>

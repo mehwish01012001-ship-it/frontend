@@ -15,6 +15,7 @@ import {
 
 import ProductCard from "../../components/ProductCard/ProductCard";
 import FilterSidebar from "../../components/FilterSidebar/FilterSidebar";
+import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs";
 
 import "./Shop.css";
 
@@ -125,6 +126,8 @@ const Shop = () => {
           Elegance stitched to perfection. Explore structural cuts, masterfully tailored ready-to-wear pret, and opulent seasonal collections.
         </p>
       </div>
+
+      <Breadcrumbs />
 
       {/* TOP FILTERS & SEARCH UTILITY BAR */}
       <div className="shop-topbar">

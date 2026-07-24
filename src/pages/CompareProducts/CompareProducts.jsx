@@ -4,6 +4,7 @@ import { FiArrowLeft, FiTrash2, FiShoppingBag } from 'react-icons/fi';
 import useCompare from '../../hooks/useCompare';
 import { useCompareActions } from '../../hooks/useCompareActions';
 import { getMediaUrl } from '../../services/api';
+import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
 import './CompareProducts.css';
 
 const CompareProducts = () => {
@@ -25,6 +26,7 @@ const CompareProducts = () => {
 
   return (
     <div className="compare-products-page container">
+      <Breadcrumbs />
       <div className="compare-header">
         <div className="compare-header-top">
           <button className="back-button" onClick={() => navigate(-1)}>

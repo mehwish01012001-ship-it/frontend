@@ -15,6 +15,7 @@ import {
 } from "react-icons/fi";
 import { useWishlist } from "../../hooks/useWishlist";
 import { getMediaUrl } from "../../services/api";
+import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs";
 import "./Wishlist.css";
 
 const Wishlist = () => {
@@ -46,6 +47,7 @@ const Wishlist = () => {
       <div className="floating-shape shape-3"></div>
 
       <div className="wishlist-wrapper">
+        <Breadcrumbs />
         <div className="wishlist-header">
           <span className="wishlist-tag">
             <FiHeart />

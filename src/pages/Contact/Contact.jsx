@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Seo from '../../components/SEO';
+import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
 import {
   FiMail,
   FiPhone,
@@ -98,6 +99,10 @@ const Contact = () => {
         twitterCard="summary_large_image"
       />
       <section className="lux-contact">
+
+      <div className="container">
+        <Breadcrumbs />
+      </div>
 
       {/* Background Effects */}
       <div className="contact-orb orb-1"></div>

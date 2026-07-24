@@ -17,6 +17,7 @@ import {
 import { productService } from "../../services";
 import { getMediaUrl } from "../../services/api";
 import { useCart } from "../../hooks/useCart";
+import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs";
 
 import "./ProductDetails.css";
 
@@ -195,6 +196,7 @@ const ProductDetails = () => {
       />
       <section className="pd-page">
         <div className="pd-container">
+          <Breadcrumbs />
           {/* Gallery Side */}
           <div className="pd-gallery">
             <div className="pd-main-image">
