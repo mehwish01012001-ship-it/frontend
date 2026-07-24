@@ -4,6 +4,8 @@ import React, { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import "./FilterSidebar.css";
 
+const ALL_SIZES = ["XS", "S", "M", "L", "XL"];
+
 const FilterSidebar = ({
   categories = [],
   selectedCategory,
@@ -16,6 +18,8 @@ const FilterSidebar = ({
   onSizeChange,
   onPriceRangeChange,
   onShowAllProducts,
+  isOpen = false,
+  onClose,
 }) => {
   const [expandedCategory, setExpandedCategory] = useState(null);
   const [isCategoriesOpen, setIsCategoriesOpen] = useState(true);
@@ -99,31 +103,41 @@ const FilterSidebar = ({
         <meta name="twitter:description" content="Discover premium stitched clothing tailored exclusively for women's sophisticated style profiles." />
       </Helmet>
 
-      <aside className="filter-sidebar">
+      <aside
+        className={`filter-sidebar${isOpen ? " open" : ""}`}
+        onPointerDown={(e) => e.stopPropagation()}
+        onTouchStart={(e) => e.stopPropagation()}
+        onClick={(e) => e.stopPropagation()}
+      >
         <div className="filter-sidebar__header">
-          <h3>Collections</h3>
-          {(selectedCategory || selectedSeason || minPrice || maxPrice) && (
-            <button 
-              type="button" 
-              className="filter-sidebar__clear" 
-              onClick={() => {
-                onShowAllProducts?.();
-                onCategoryChange?.("");
-                onSeasonChange?.("");
-                setExpandedCategory(null);
-              }}
-            >
-              Clear Filters
+          <h3>Filter</h3>
+          <div className="filter-sidebar__header-actions">
+            {(selectedCategory || selectedSeason || selectedSize || minPrice || maxPrice) && (
+              <button 
+                type="button" 
+                className="filter-sidebar__clear" 
+                onClick={() => {
+                  onShowAllProducts?.();
+                  onCategoryChange?.("");
+                  onSeasonChange?.("");
+                  setExpandedCategory(null);
+                }}
+              >
+                Clear Filters
+              </button>
+            )}
+            <button type="button" className="filter-sidebar__close" onClick={onClose}>
+              ✕
             </button>
-          )}
+          </div>
         </div>
 
         <div className="filter-group">
           <div className="filter-option-container">
-            <label className={`filter-option ${!selectedCategory && !selectedSeason && !minPrice && !maxPrice ? "active" : ""}`}>
+            <label className={`filter-option ${!selectedCategory && !selectedSeason && !selectedSize && !minPrice && !maxPrice ? "active" : ""}`}>
               <input
                 type="checkbox"
-                checked={!selectedCategory && !selectedSeason}
+                checked={!selectedCategory && !selectedSeason && !selectedSize && !minPrice && !maxPrice}
                 onChange={() => {
                   onShowAllProducts?.();
                   onCategoryChange?.("");

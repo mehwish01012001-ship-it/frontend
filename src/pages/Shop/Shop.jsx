@@ -6,6 +6,8 @@ import {
   FiPackage,
   FiTrendingUp,
   FiAward,
+  FiGrid,
+  FiMenu,
 } from "react-icons/fi";
 
 import {
@@ -23,6 +25,8 @@ const Shop = () => {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [viewMode, setViewMode] = useState("grid");
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
 
   // Added sizes, price range, and layout states for a premium store feel
   const [filters, setFilters] = useState({
@@ -52,6 +56,10 @@ const Shop = () => {
     }
   };
 
+  const handleCloseFilter = () => {
+    setIsFilterOpen(false);
+  };
+
   const fetchProducts = async () => {
     setLoading(true);
     try {
@@ -61,8 +69,11 @@ const Shop = () => {
         category: filters.category,
         season: filters.season,
         sort: filters.sort,
-        size: filters.size,
       };
+
+      if (filters.size) {
+        params.size = filters.size;
+      }
 
       // Only include min/max when user provided values (allow 0 explicitly)
       if (filters.minPrice !== "" && filters.minPrice !== undefined && filters.minPrice !== null) params.minPrice = filters.minPrice;
@@ -160,6 +171,34 @@ const Shop = () => {
             <span>{products.length} Masterpieces</span>
           </div>
 
+          <button
+            type="button"
+            className="mobile-filter-toggle"
+            onClick={() => setIsFilterOpen(true)}
+          >
+            <FiSliders className="icon-gold" />
+            <span>Filter</span>
+          </button>
+
+          <div className="view-toggle">
+            <button
+              type="button"
+              className={viewMode === "grid" ? "active" : ""}
+              aria-label="Grid view"
+              onClick={() => setViewMode("grid")}
+            >
+              <FiGrid />
+            </button>
+            <button
+              type="button"
+              className={viewMode === "list" ? "active" : ""}
+              aria-label="List view"
+              onClick={() => setViewMode("list")}
+            >
+              <FiMenu />
+            </button>
+          </div>
+
           <div className="sort-box">
             <FiSliders className="icon-gold" />
             <select
@@ -177,6 +216,8 @@ const Shop = () => {
               <option value="price-high">Price: High to Low</option>
             </select>
           </div>
+
+
         </div>
       </div>
 
@@ -189,6 +230,8 @@ const Shop = () => {
           selectedSize={filters.size}
           minPrice={filters.minPrice}
           maxPrice={filters.maxPrice}
+          isOpen={isFilterOpen}
+          onClose={handleCloseFilter}
           onCategoryChange={(val) =>
             setFilters((prev) => ({
               ...prev,
@@ -238,7 +281,7 @@ const Shop = () => {
           ) : (
             <>
               {products.length > 0 ? (
-                <div className="products-grid">
+                <div className={`products-grid ${viewMode}-view`}>
                   {products.map((product) => (
                     <ProductCard
                       key={product._id || product.id}

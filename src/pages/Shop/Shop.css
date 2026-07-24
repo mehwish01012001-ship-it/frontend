@@ -202,6 +202,57 @@
   color: #f7f4ee;
 }
 
+  .view-toggle {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .mobile-filter-toggle {
+    display: none;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.16);
+    background: #ffffff;
+    color: #000000;
+    padding: 0 12px;
+    height: 40px;
+    border-radius: 14px;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    transition: all 0.25s ease;
+  }
+
+  .mobile-filter-toggle:hover {
+    background: #f2f2f2;
+  }
+
+  .view-toggle button {
+    border: 1px solid rgba(0, 0, 0, 0.16);
+    background: #ffffff;
+    color: #000000;
+    width: 40px;
+    height: 40px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+
+  .view-toggle button.active {
+    background: #000000;
+    border-color: #000000;
+    color: #ffffff;
+  }
+
+  .view-toggle button:hover {
+    background: #f2f2f2;
+  }
+
 /* MAIN BODY GRID */
 .shop-body {
   position: relative;
@@ -212,9 +263,50 @@
   align-items: start;
 }
 
-/* SHOP PRODUCTS GRID */
-.products-grid {
-  display: grid;
+.products-grid.list-view {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.products-grid.list-view .lux-card {
+  display: flex;
+  flex-direction: row;
+  gap: 18px;
+  min-height: 190px;
+  padding: 12px;
+}
+
+.products-grid.list-view .lux-card .image-section {
+  flex: 0 0 200px;
+  aspect-ratio: 4 / 3;
+}
+
+.products-grid.list-view .lux-card .product-info {
+  padding: 8px 6px 8px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.products-grid.list-view .lux-card .price-wrapper {
+  margin-top: auto;
+}
+
+.products-grid.list-view .lux-card .product-title {
+  font-size: 16px;
+  margin-bottom: 2px;
+}
+
+.products-grid.list-view .lux-card .product-info .brand,
+.products-grid.list-view .lux-card .product-info .rating {
+  margin-bottom: 8px;
+}
+
+.products-grid.list-view .lux-card:hover {
+  transform: translateY(0);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
   grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
   gap: 30px;
 }
@@ -341,8 +433,13 @@
     width: 100%;
   }
 
+  .mobile-filter-toggle {
+    display: inline-flex;
+  }
+
   .right-tools {
     justify-content: space-between;
+    flex-wrap: wrap;
   }
 }
 
@@ -370,12 +467,13 @@
   }
 
   .count-box,
-  .sort-box {
-    flex: 1;             /* Dono boxes barabar (50% each) width lenge */
+  .sort-box,
+  .mobile-filter-toggle {
+    flex: 1 1 calc(50% - 5px);
     justify-content: center;
-    padding: 12px 8px;   /* Padding kam ki taaki small screens par shrink hone par design kharab na ho */
-    font-size: 11px;     /* Mobile display optimize karne ke liye chota font */
-    white-space: nowrap; /* Content wrap ho kar multi-line me na jaye */
+    padding: 12px 8px;
+    font-size: 11px;
+    white-space: nowrap;
   }
 
   .sort-box select {
