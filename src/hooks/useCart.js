@@ -2,7 +2,7 @@ import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { cartService } from '../services';
-import { setCart, clearCart } from '../redux/slices/cartSlice';
+import { setCart, clearCart, openCartDrawer } from '../redux/slices/cartSlice';
 import { TOAST_MESSAGES } from '../constants';
 
 export const useCart = () => {
@@ -20,16 +20,18 @@ export const useCart = () => {
   }, [dispatch]);
 
   const addToCart = useCallback(
-    async (product, quantity = 1, size = '', color = '') => {
+    async (product, quantity = 1, size = '', color = '', note = '') => {
       try {
         const response = await cartService.addToCart({
           productId: product._id || product.id,
           quantity,
           size,
           color,
+          note,
         });
         const cart = response.data.cart || response.data || { items: [] };
         dispatch(setCart(cart));
+        dispatch(openCartDrawer());
         toast.success(TOAST_MESSAGES.ADD_TO_CART_SUCCESS);
         return response.data;
       } catch (error) {

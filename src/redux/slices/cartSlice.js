@@ -5,6 +5,7 @@ const initialState = {
   total: 0,
   loading: false,
   error: null,
+  isDrawerOpen: false,
 };
 
 const cartSlice = createSlice({
@@ -44,6 +45,13 @@ const cartSlice = createSlice({
     clearCart(state) {
       state.items = [];
       state.total = 0;
+      state.isDrawerOpen = false;
+    },
+    openCartDrawer(state) {
+      state.isDrawerOpen = true;
+    },
+    closeCartDrawer(state) {
+      state.isDrawerOpen = false;
     },
     setLoading(state, action) {
       state.loading = action.payload;
@@ -54,5 +62,5 @@ const cartSlice = createSlice({
   },
 });
 
-export const { setCart, addItem, removeItem, updateQuantity, clearCart, setLoading, setError } = cartSlice.actions;
+export const { setCart, addItem, removeItem, updateQuantity, clearCart, openCartDrawer, closeCartDrawer, setLoading, setError } = cartSlice.actions;
 export default cartSlice.reducer;

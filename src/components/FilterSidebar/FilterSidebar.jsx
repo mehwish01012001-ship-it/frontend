@@ -162,7 +162,15 @@ const FilterSidebar = ({
             {isSizesOpen && (
               <div className="filter-size-content">
                 <div className="size-list">
-                  {['XS','S','M','L','XL'].map((s) => (
+                  <label className={`filter-option size-option ${!selectedSize ? "active" : ""}`}>
+                    <input
+                      type="checkbox"
+                      checked={!selectedSize}
+                      onChange={() => onSizeChange?.("")}
+                    />
+                    <span>All Sizes</span>
+                  </label>
+                  {ALL_SIZES.map((s) => (
                     <label key={s} className={`filter-option size-option ${String(selectedSize) === String(s) ? "active" : ""}`}>
                       <input
                         type="checkbox"
