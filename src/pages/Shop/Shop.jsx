@@ -55,16 +55,20 @@ const Shop = () => {
   const fetchProducts = async () => {
     setLoading(true);
     try {
-      const res = await productService.getAllProducts({
-        limit: 24, // Sized for optimized desktop grid patterns
+      const params = {
+        limit: 24,
         search: filters.search,
         category: filters.category,
         season: filters.season,
         sort: filters.sort,
         size: filters.size,
-        minPrice: filters.minPrice,
-        maxPrice: filters.maxPrice,
-      });
+      };
+
+      // Only include min/max when user provided values (allow 0 explicitly)
+      if (filters.minPrice !== "" && filters.minPrice !== undefined && filters.minPrice !== null) params.minPrice = filters.minPrice;
+      if (filters.maxPrice !== "" && filters.maxPrice !== undefined && filters.maxPrice !== null) params.maxPrice = filters.maxPrice;
+
+      const res = await productService.getAllProducts(params);
 
       setProducts(res?.data?.products || []);
     } catch (err) {
